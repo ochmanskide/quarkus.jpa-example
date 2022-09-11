@@ -1,7 +1,7 @@
 package de.ochmanski.microservices.quarkus.jpa.example.mapper;
 
 import de.ochmanski.generated.model.OssMapIdentityRequest;
-import de.ochmanski.generated.model.OssMapIdentitySyncRequest;
+import de.ochmanski.generated.model.UserSyncRequest;
 import de.ochmanski.generated.model.OssSyncResponseStatus;
 import de.ochmanski.microservices.quarkus.jpa.example.service.UserService;
 import de.ochmanski.microservices.quarkus.jpa.example.rest.response.OssMapIdentityResponse;
@@ -17,8 +17,8 @@ public class UserResponseMapper {
     @Inject
     UserService userService;
 
-    public OssMapIdentitySyncFromMcipResponse mapIdentityPost(OssMapIdentitySyncRequest ossMapIdentitySyncRequest) {
-        UserSyncRequestDto dto = map(ossMapIdentitySyncRequest);
+    public OssMapIdentitySyncFromMcipResponse mapIdentityPost(UserSyncRequest userSyncRequest) {
+        UserSyncRequestDto dto = map(userSyncRequest);
         OssMapIdentitySyncFromMcipResponseDto ossMapIdentitySyncFromMcipResponse = userService.mapIdentityPost(dto);
         return map(ossMapIdentitySyncFromMcipResponse);
     }
@@ -67,16 +67,16 @@ public class UserResponseMapper {
                 .build();
     }
 
-    private UserSyncRequestDto map(OssMapIdentitySyncRequest ossMapIdentitySyncRequest) {
-        return null == ossMapIdentitySyncRequest
+    private UserSyncRequestDto map(UserSyncRequest userSyncRequest) {
+        return null == userSyncRequest
                 ? UserSyncRequestDto.builder().build()
                 : UserSyncRequestDto.builder()
-                .syncInfoRequest(mapOssMapIdentitySyncRequest(ossMapIdentitySyncRequest))
+                .syncInfoRequest(mapOssMapIdentitySyncRequest(userSyncRequest))
                 .build();
     }
 
-    private UserRequestDto mapOssMapIdentitySyncRequest(OssMapIdentitySyncRequest ossMapIdentitySyncRequest) {
-        OssMapIdentityRequest syncInfoRequest = ossMapIdentitySyncRequest.getSyncInfoRequest();
+    private UserRequestDto mapOssMapIdentitySyncRequest(UserSyncRequest userSyncRequest) {
+        OssMapIdentityRequest syncInfoRequest = userSyncRequest.getSyncInfoRequest();
         return null == syncInfoRequest
                 ? UserRequestDto.builder().build()
                 : UserRequestDto.builder()

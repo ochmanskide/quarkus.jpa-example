@@ -1,7 +1,7 @@
 package de.ochmanski.microservices.quarkus.jpa.example.rest.controller;
 
 import de.ochmanski.generated.api.NotFoundException;
-import de.ochmanski.generated.model.OssMapIdentitySyncRequest;
+import de.ochmanski.generated.model.UserSyncRequest;
 import de.ochmanski.generated.model.OssMapIdentitySyncResponse;
 import de.ochmanski.microservices.quarkus.jpa.example.rest.response.OssMapIdentitySyncFromMcipResponse;
 import io.swagger.annotations.*;
@@ -28,5 +28,5 @@ public interface UserApi {
             @ApiResponse(code = 200, message = "OK", response = OssMapIdentitySyncFromMcipResponse.class),
             @ApiResponse(code = 401, message = "No Authentication", response = Void.class)})
     Response mapIdentityPost(
-            @ApiParam(value = "") @Valid OssMapIdentitySyncRequest ossMapIdentitySyncRequest) throws NotFoundException;
+            @ApiParam(value = "") @Valid UserSyncRequest userSyncRequest) throws NotFoundException;
 }

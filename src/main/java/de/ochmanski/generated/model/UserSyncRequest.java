@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2022-07-01T15:48:33.129484100+02:00[Europe/Berlin]")
-public class OssMapIdentitySyncRequest {
+public class UserSyncRequest {
 
   private OssMapIdentityRequest syncInfoRequest;
 
@@ -35,8 +35,8 @@ public class OssMapIdentitySyncRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OssMapIdentitySyncRequest ossMapIdentitySyncRequest = (OssMapIdentitySyncRequest) o;
-    return Objects.equals(syncInfoRequest, ossMapIdentitySyncRequest.syncInfoRequest);
+    UserSyncRequest userSyncRequest = (UserSyncRequest) o;
+    return Objects.equals(syncInfoRequest, userSyncRequest.syncInfoRequest);
   }
 
   @Override
