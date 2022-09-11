@@ -1,29 +1,10 @@
-# MCIP Database Example
+# Quarkus JPA Example
 
-last updated: Tue Jul 19 13:03:58 CEST 2022
+last updated: Sun Sep 11 21:56:01 CEST 2022
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
-&nbsp;
-
-&nbsp;
-
-Main branch:  
-![](https://codebuild.eu-central-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiaTJDcTNQRVE0RkhlZVdyUkQrK2JNY3A5bU8yQXJaTks0UmNuODBvSiszREZRdm5qWGdPcngzckE0blNKUHZCRm1BdFA2ZnZQL3ZNeUcxbGRvdW10L0NRPSIsIml2UGFyYW1ldGVyU3BlYyI6InkwUXp3KzlHL0trSU41UHciLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=main)
-
-Latest tag: 1.0.20  
-![](https://codebuild.eu-central-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiaTJDcTNQRVE0RkhlZVdyUkQrK2JNY3A5bU8yQXJaTks0UmNuODBvSiszREZRdm5qWGdPcngzckE0blNKUHZCRm1BdFA2ZnZQL3ZNeUcxbGRvdW10L0NRPSIsIml2UGFyYW1ldGVyU3BlYyI6InkwUXp3KzlHL0trSU41UHciLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&tag=1.0.20)  
-&nbsp;
-
-&nbsp;
-
-## URLs:
-
-* http://localhost:8080
-* https://oss-mcip-database-template-v1.id-dev.blueid.net/
-* https://oss-mcip-database-template-v1.id-int.blueid.net/
-* https://oss-mcip-database-template-v1.id-prod.blueid.net/  
 &nbsp;
 
 &nbsp;
@@ -48,43 +29,11 @@ Latest tag: 1.0.20
     - [7.4.1. how to run a snapshot](#741-how-to-run-a-snapshot)
     - [7.4.2. how to open a docker image](#742-how-to-open-a-docker-image)
     - [7.4.3. Sample `application-docker.yml` with a password](#743-sample-application-dockeryml-with-a-password)
-- [8. Links](#8-links)
-  - [8.1. OpenSearch Logs](#81-opensearch-logs)
-  - [8.2. Build History](#82-build-history)
-  - [8.3. EC2](#83-ec2)
-  - [8.4. Clusters](#84-clusters)
-  - [8.5. Metrics](#85-metrics)
-  - [8.6. Tasks](#86-tasks)
-  - [8.7. Task definitions](#87-task-definitions)
-  - [8.8. Services](#88-services)
-  - [8.9. Tasks](#89-tasks)
-  - [8.10. Target Groups](#810-target-groups)
-  - [8.11. Instances](#811-instances)
-  - [8.12. CloudWatch logs](#812-cloudwatch-logs)
-  - [8.13. Task logs](#813-task-logs)
-- [9. How to bump a version?](#9-how-to-bump-a-version)
-  - [9.1. Add a new tag](#91-add-a-new-tag)
-- [10. Related Guides](#10-related-guides)
-- [11. Including resources](#11-including-resources)
-  - [11.1. Including resources](#111-including-resources)
-&nbsp;
-
-&nbsp;
-&nbsp;
-
-&nbsp;
-
-## Before you start
-
-### Gradle configuration
-
-Before you start it is assumed that you read and completed the
-[Developer Guide](https://eu-central-1.console.aws.amazon.com/codesuite/codecommit/repositories/documentation.developer-documentation/browse?region=eu-central-1)
-
-The document contains instruction how to configure access to our binary repository (CodeArtifact).  
-Without access to CodeArtifact, you will be unable to compile any java project. Most java projects use libraries,  
-which are stored there. If you don't set up the Multi-Factor authentication, the credentials, and the right repository URL  
-in your operating system, you may see compilation errors or other type of errors during build process.
+- [8. How to bump a version?](#9-how-to-bump-a-version)
+  - [8.1. Add a new tag](#91-add-a-new-tag)
+- [9. Related Guides](#10-related-guides)
+- [10. Including resources](#11-including-resources)
+  - [10.1. Including resources](#111-including-resources)
 &nbsp;
 
 &nbsp;
@@ -95,8 +44,8 @@ in your operating system, you may see compilation errors or other type of errors
 ## 1. How to clone:
 
 ```bash
-git clone codecommit::eu-central-1://Blueid-id-developer@net.blueid.microservices.oss.mcip.mcip-database-template \
-~/Workspace/aws/net/blueid/microservices/oss/mcip/mcip-database-template
+git clone git@github.com:lukaszochmanski/quarkus-jpa-example.git \
+~/Workspace/de/ochmanski/microservices/quarkus/quarkus-jpa-example
 ```
 &nbsp;
 
@@ -173,7 +122,7 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 gradle build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./build/code-with-quarkus-1.0.20-SNAPSHOT-runner`
+You can then execute your native executable with: `./build/code-with-quarkus-1.0.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.  
 &nbsp;
@@ -214,8 +163,8 @@ command to execute:
 
 ```bash
 GRAALVM_HOME='$HOME/.sdkman/candidates/java/22.1.0.r17-grl'
-groupId='net/blueid/microservices/iam/sso-iam'
-artifactId='mcip-database-template'
+groupId='de/ochmanski/microservices/iam/sso-iam'
+artifactId='quarkus-jpa-example'
 DOCKER_REPOSITORY="snapshots"
 gradle build \
     -Dquarkus.package.type=native \
@@ -264,8 +213,8 @@ quarkus build --native
 a similar command for gradle users:
 
 ```bash
-groupId='net/blueid/microservices/iam/sso-iam'
-artifactId='mcip-database-template'
+groupId='de/ochmanski/microservices/iam/sso-iam'
+artifactId='quarkus-jpa-example'
 DOCKER_REPOSITORY="snapshots"
 gradle build \
     -Dquarkus.package.type=native \
@@ -311,7 +260,7 @@ We run our build pipelines inside another Docker container. You may find details
 This option is good for someone that is not a java developer and wants runtime environment quickly.
 
 ```bash
-docker run --rm -p 8080:8080 --name="mcip-database-template-1.0.20" -it 964010022385.dkr.ecr.eu-central-1.amazonaws.com/releases/net/blueid/microservices/oss/mcip/mcip-database-template:1.0.20
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.0" -it ../releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.0
 ```
 
 However, this will probably not work, because the database url is not the same inside a docker container.  
@@ -333,11 +282,11 @@ Below, I present some examples, how it can be done.
 ### 7.1. how to run Quarkus from docker container with custom `application.yml` mount
 
 ```bash
-cd $AWS/net/blueid/microservices/oss/mcip/mcip-database-template
-docker run --rm -p 8080:8080 --name="mcip-database-template-1.0.20" \
+cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.0" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
--it 964010022385.dkr.ecr.eu-central-1.amazonaws.com/releases/net/blueid/microservices/oss/mcip/mcip-database-template:1.0.20
+-it releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.0
 ```
 
 #### 7.1.1. Sample `application-docker.yml` with a password
@@ -349,7 +298,7 @@ info:
 quarkus:
   datasource:
     jdbc:
-      url:mysql://host.docker.internal:3306/oss_module-a?serverTimezone=UTC&useLegacyDatetimeCode=false
+      url: mysql://host.docker.internal:3306/oss_module-a?serverTimezone=UTC&useLegacyDatetimeCode=false
     password: <changeme>
   http:
     cors: true
@@ -359,7 +308,6 @@ quarkus:
     path: '/swagger-ui.html'
   log:
     level: DEBUG
-iam/mp-rest/url: https://mcip-database-template-v1.id-dev.blueid.net/
 ```
 
 ### 7.2. how to run Quarkus from docker container with custom `application.yml` mount and a password
@@ -369,12 +317,12 @@ you may pass the value directly into the docker container using `-e` flag. In su
 from `application-docker.yml` file.
 
 ```bash
-cd $AWS/net/blueid/microservices/oss/mcip/mcip-database-template
-docker run -it --rm -p 8080:8080 --name="mcip-database-template-1.0.20" \
+cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
+docker run -it --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.0" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
 -e QUARKUS_DATASOURCE_PASSWORD=$QUARKUS_DATASOURCE_PASSWORD \
-964010022385.dkr.ecr.eu-central-1.amazonaws.com/releases/net/blueid/microservices/oss/mcip/mcip-database-template:1.0.20
+releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.0
 ```
 
 #### 7.2.1. Sample `application-docker.yml` without a password
@@ -395,15 +343,14 @@ quarkus:
     path: '/swagger-ui.html'
   log:
     level: DEBUG
-iam/mp-rest/url: https://mcip-database-template-v1.id-dev.blueid.net/
 ```
 
 ### 7.3. how to run Quarkus from docker container without mounting `application.yml`
 
 ```bash
-docker run --rm -p 8080:8080 --name="mcip-database-template-1.0.20" \
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.0" \
 -e QUARKUS_DATASOURCE_PASSWORD=$QUARKUS_DATASOURCE_PASSWORD \
--it 964010022385.dkr.ecr.eu-central-1.amazonaws.com/releases/net/blueid/microservices/oss/mcip/mcip-database-template:1.0.20
+-it releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.0
 ```
 
 > **_NOTE:_** `quarkus.datasource.url` must contain: `jdbc:mysql://host.docker.internal:3306`
@@ -427,14 +374,14 @@ pipeline. The result will be the same.
 #### 7.4.1. how to run a snapshot
 
 look at the output of the gradle command in the console. Assuming that the created docker image is identified as:
-`1.0.20-SNAPSHOT`, you may run it in the following manner:
+`1.0.0-SNAPSHOT`, you may run it in the following manner:
 
 ```bash
-cd $AWS/net/blueid/microservices/oss/mcip/mcip-database-template
-docker run --rm -p 8080:8080 --name="mcip-database-template-1.0.20-SNAPSHOT" \
+cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.0-SNAPSHOT" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
--it 964010022385.dkr.ecr.eu-central-1.amazonaws.com/snapshots/net/blueid/microservices/oss/mcip/mcip-database-template:1.0.20-SNAPSHOT
+-it snapshots/de/ochmanski/microservices/quarkus-jpa-example:1.0.0-SNAPSHOT
 ```
 
 > **_NOTE:_** `quarkus.datasource.url` must contain: `jdbc:mysql://host.docker.internal:3306`
@@ -445,14 +392,14 @@ target=/work/config/application.yml \
 #### 7.4.2. how to open a docker image
 
 look at the output of the gradle command in the console. Assuming that the created docker image is identified as:
-`1.0.20-SNAPSHOT`, you may open it in the following manner:
+`1.0.0-SNAPSHOT`, you may open it in the following manner:
 
 ```bash
-cd $AWS/net/blueid/microservices/oss/mcip/mcip-database-template
-docker run --rm -ti --privileged --entrypoint /bin/sh --rm -p 8080:8080 --name="mcip-database-template-1.0.20-SNAPSHOT" \
+cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
+docker run --rm -ti --privileged --entrypoint /bin/sh --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.0-SNAPSHOT" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
--it 964010022385.dkr.ecr.eu-central-1.amazonaws.com/snapshots/net/blueid/microservices/oss/mcip/mcip-database-template:1.0.20-SNAPSHOT
+-it snapshots/de/ochmanski/microservices/quarkus-jpa-example:1.0.0-SNAPSHOT
 ```
 
 #### 7.4.3. Sample `application-docker.yml` with a password
@@ -474,76 +421,11 @@ quarkus:
     path: '/swagger-ui.html'
   log:
     level: DEBUG
-iam/mp-rest/url: https://mcip-database-template-v1.id-dev.blueid.net/
 ```
 
-## 8. Links
+## 8. How to bump a version?
 
-### 8.1. OpenSearch Logs
-
-* [Selected fields: message]("https://logs-tmp.id-tool.blueid.net/_dashboards/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now%2Fd,to:now%2Fd))&_a=(columns:!(message),filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:c35c4440-f7e8-11ec-aae2-192400618207,key:logGroup,negate:!f,params:(query:sso-iam-v1),type:phrase),query:(match_phrase:(logGroup:sso-iam-v1)))),index:c35c4440-f7e8-11ec-aae2-192400618207,interval:auto,query:(language:kuery,query:''),savedQuery:sso-iam-v1,sort:!())")
-* [All logs]("https://logs-tmp.id-tool.blueid.net/_dashboards/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now%2Fd,to:now%2Fd))&_a=(columns:!(_source),filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:c35c4440-f7e8-11ec-aae2-192400618207,key:logGroup,negate:!f,params:(query:sso-iam-v1),type:phrase),query:(match_phrase:(logGroup:sso-iam-v1)))),index:c35c4440-f7e8-11ec-aae2-192400618207,interval:auto,query:(language:kuery,query:''),savedQuery:sso-iam-v1,sort:!())")
-
-### 8.2. Build History
-
-* https://eu-central-1.console.aws.amazon.com/codesuite/codebuild/964010022385/projects/net-blueid-microservices-oss-mcip-mcip-database-template-build-project/history?region=eu-central-1&builds-meta=eyJmIjp7InRleHQiOiIifSwicyI6e30sIm4iOjIwLCJpIjowfQ
-
-### 8.3. EC2
-
-* https://eu-central-1.console.aws.amazon.com/ec2/v2/home?region=eu-central-1#Home:
-
-### 8.4. Clusters
-
-* https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/clusters
-
-### 8.5. Metrics
-
-* https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/clusters/microservices/metrics
-
-### 8.6. Tasks
-
-* https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/clusters/microservices/tasks
-* https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/taskDefinitions/sso-iam-v1/14
-
-### 8.7. Task definitions
-&nbsp;
-
-&nbsp;
-### 8.8. Services
-
-* https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/clusters/microservices/services
-* https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/clusters/microservices/services/id-dev-sso-iam-v1/details
-* https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/clusters/microservices/services/id-dev-sso-iam-v1/tasks
-
-### 8.9. Tasks
-
-* https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/clusters/microservices/tasks
-* https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/taskDefinitions/mcip-service-v1/1
-
-### 8.10. Target Groups
-
-* https://eu-central-1.console.aws.amazon.com/ec2/v2/home?region=eu-central-1#TargetGroups:
-* https://eu-central-1.console.aws.amazon.com/ec2/v2/home?region=eu-central-1#TargetGroup:targetGroupArn=arn:aws:elasticloadbalancing:eu-central-1:977617167912:targetgroup/mcip-database-template/ca319280b0663b11
-
-### 8.11. Instances
-
-* https://eu-central-1.console.aws.amazon.com/ec2/v2/home?region=eu-central-1#Instances:instanceId=i-04abc550a0e712398
-* https://eu-central-1.console.aws.amazon.com/ec2/v2/home?region=eu-central-1#InstanceDetails:instanceId=i-04abc550a0e712398
-
-### 8.12. CloudWatch logs
-
-* https://eu-central-1.console.aws.amazon.com/cloudwatch/home?region=eu-central-1#logsV2:log-groups/log-group/$252Fecs$252Fsso-iam-v1
-
-### 8.13. Task logs
-
-* https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/clusters/microservices/services/id-dev-sso-iam-v1/logs  
-  &nbsp;
-
-&nbsp;
-
-## 9. How to bump a version?
-
-### 9.1. Add a new tag
+### 8.1. Add a new tag
 
 ```bash
 git bump
@@ -559,19 +441,19 @@ git push --follow-tags
 &nbsp;
 
 &nbsp;
-## 10. Related Guides
+## 9. Related Guides
 
 - Hibernate Validator ([guide](https://quarkus.io/guides/validation)): Validate object properties (field, getter) and
   method parameters for your beans (REST, CDI, JPA)
   &nbsp;
 
 &nbsp;
-## 11. Including resources
+## 10. Including resources
 
 Supporting native in your application
 GraalVM imposes a number of constraints and making your application a native executable might require a few tweaks.
 
-### 11.1. Including resources
+### 10.1. Including resources
 
 https://quarkus.io/guides/writing-native-applications-tips#including-resources
 https://quarkus.io/guides/writing-native-applications-tips#including-resources-2
