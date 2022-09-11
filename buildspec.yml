@@ -1,0 +1,47 @@
+version: 0.2
+
+env:
+  variables:
+    buildComputeType: BUILD_GENERAL1_LARGE
+    buildComputeXmx: 15G
+    buildImage: base/images/debian/debian-11-bullseye/mandrel/22-1/java-17/mandrel-22-1-gradle-7-4-java-17:1.0.0
+    runtimeImage: base/images/red-hat/red-hat-8-5/quay-io/quarkus/quarkus-micro-image:1.0.0
+
+cache:
+  paths:
+    - '/home/gradle/.gradle/caches/**/*'
+
+phases:
+  install:
+    commands:
+      - /home/image/check.sh
+      - /usr/local/bin/dockerd-entrypoint.sh 2> /dev/null
+  pre_build:
+    commands:
+      - /home/aws/ecr/login.sh
+      - . /home/aws/codeartifact/login.sh
+  build:
+    commands:
+      - ./gradle/build.sh
+  post_build:
+    commands:
+      - /home/image/summary.sh
+
+reports:
+  jacoco-report:
+    files:
+      - 'build/reports/jacoco/test/jacocoTestReport.xml'
+    file-format: 'JACOCOXML'
+  unit-test-results:
+    files:
+      - '**/*'
+    base-directory: build/test-results/test
+    discard-paths: no
+
+artifacts:
+  files:
+    - build/quarkus-artifact.properties
+    - build/jib-image.digest
+    - build/jib-image.id
+    - build/quarkus-app/app/*.jar
+    - build/*-native-image-source-jar/*

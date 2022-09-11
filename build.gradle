@@ -1,0 +1,91 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id "io.freefair.lombok" version "6.4.1"
+    id "com.gorylenko.gradle-git-properties" version "2.4.0"
+    id 'io.quarkus'
+    id 'jacoco'
+}
+
+ext {
+    buildNumber = project.properties['buildNumber'] ?: 'local'
+}
+
+repositories {
+    mavenCentral()
+}
+
+group 'de.ochmanski.microservices'
+version 'local-SNAPSHOT'
+
+dependencies {
+    implementation(
+            enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"),
+            'io.quarkus:quarkus-arc',
+            'io.quarkus:quarkus-container-image-jib',
+            'io.quarkus:quarkus-hibernate-validator',
+            'io.quarkus:quarkus-resteasy-reactive',
+            'io.quarkus:quarkus-resteasy-reactive-jackson',
+            'io.quarkus:quarkus-rest-client-reactive',
+            'io.quarkus:quarkus-rest-client-reactive-jackson',
+            'io.quarkus:quarkus-smallrye-health',
+            'io.quarkus:quarkus-smallrye-openapi',
+            'io.quarkus:quarkus-config-yaml',
+            'io.quarkus:quarkus-hibernate-orm-panache',
+            'io.quarkus:quarkus-jdbc-mysql',
+            'javax.annotation:javax.annotation-api:1.3.2',
+            'com.google.code.findbugs:jsr305:3.0.2',
+            'org.jboss.logmanager:log4j2-jboss-logmanager',
+            'javax.servlet:javax.servlet-api:4.0.1',
+            'javax:javaee-api:8.0.1',
+            'net.blueid.microservices.oss.mcip:mcip-service-rest:1.0.4'
+    )
+    configurations.all {
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    }
+    testImplementation(
+            'io.quarkus:quarkus-junit5',
+            'org.mockito:mockito-core:4.6.1',
+            'org.mockito:mockito-junit-jupiter:4.6.1',
+            'org.assertj:assertj-core:3.23.1',
+            'io.rest-assured:rest-assured'
+    )
+}
+
+// <editor-fold defaultstate="collapsed" desc="exclude integration tests from standard gradle build in CI">
+test {
+    exclude '**/*IT.class'
+}
+// </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="jacoco plugin">
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
+// </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="lombok plugin">
+quarkusGenerateCodeDev.dependsOn {
+    tasks.findAll { task -> task.name.startsWith('generateEffectiveLombokConfig') }
+}
+
+quarkusGenerateCode.dependsOn {
+    tasks.findAll { task -> task.name.startsWith('generateEffectiveLombokConfig') }
+}
+
+quarkusGenerateCodeTests.dependsOn {
+    tasks.findAll { task -> task.name.startsWith('generateTestEffectiveLombokConfig') }
+}
+// </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="idea plugin">
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+// </editor-fold>

@@ -1,0 +1,30 @@
+quarkus:
+  native:
+    additional-build-args: '-H:Log=registerResource:5'
+    resources:
+      includes: 'quarkus-runtime-config-defaults.properties,pre-tag-git.properties,gradle.properties,build.properties,buildNumber.properties,jibEnv.properties,jvmArgs.properties,buildStartTime.properties,git.properties.properties,application.yml'
+  ssl:
+    native: true
+  http:
+    cors: true
+    port: 8080
+  swagger-ui:
+    always-include: true
+    path: '/swagger-ui.html'
+  datasource:
+    db-kind: mysql
+    username: oss_mcip_v1
+    jdbc:
+      url: 'jdbc:mysql://127.0.0.1:3306/oss_mcip_v1?serverTimezone=UTC&useLegacyDatetimeCode=false'
+  hibernate-orm:
+    database:
+      generation: drop-and-create
+#net:
+#  blueid:
+#    microservices:
+#      oss:
+#        mcip:
+#          jackson:
+#            prettyPrint: false
+#  log:
+#    level: DEBUG
