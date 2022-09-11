@@ -54,18 +54,18 @@ public class UserService {
         return null == entity
                 ? OssMapIdentitySyncFromMcipResponseDto.builder().build()
                 : OssMapIdentitySyncFromMcipResponseDto.builder()
-                .status(mapToStatus(entity))
-                .syncInfoResponse(mapToSyncInfoResponse(entity))
-                .build();
+                    .status(mapToStatus(entity))
+                    .syncInfoResponse(mapToSyncInfoResponse(entity))
+                    .build();
     }
 
     private OssSyncResponseStatusDto mapToStatus(UserResponseDto entity) {
         return null == entity
                 ? OssSyncResponseStatusDto.builder().build()
                 : OssSyncResponseStatusDto.builder()
-                .code(200)
-                .description(crateStatus(entity))
-                .build();
+                    .code(200)
+                    .description(crateStatus(entity))
+                    .build();
     }
 
     @NotNull
@@ -81,19 +81,19 @@ public class UserService {
         return null == entity
                 ? SyncInfoResponseDto.builder().build()
                 : SyncInfoResponseDto.builder()
-                .ossMapIdentityResponse(mapToOssMapIdentityResponse(entity))
-                .build();
+                    .ossMapIdentityResponse(mapToOssMapIdentityResponse(entity))
+                    .build();
     }
 
     private UserResponseDto mapToOssMapIdentityResponse(UserResponseDto response) {
         return null == response
                 ? UserResponseDto.builder().build()
                 : UserResponseDto.builder()
-                .id(response.getId())
-                .identity(response.getIdentity())
-                .token(response.getToken())
-                .credentialId(response.getCredentialId())
-                .build();
+                    .id(response.getId())
+                    .identity(response.getIdentity())
+                    .token(response.getToken())
+                    .credentialId(response.getCredentialId())
+                    .build();
     }
 
     private UserRequestDto map(UserSyncRequestDto ossMapIdentitySyncRequest) {
@@ -101,9 +101,9 @@ public class UserService {
         return null == request
                 ? UserRequestDto.builder().build()
                 : UserRequestDto.builder()
-                .identity(request.getIdentity())
-                .token(request.getToken())
-                .credentialId(request.getCredentialId())
-                .build();
+                    .identity(request.getIdentity())
+                    .token(request.getToken())
+                    .credentialId(request.getCredentialId())
+                    .build();
     }
 }
