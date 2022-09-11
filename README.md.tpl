@@ -145,7 +145,7 @@ or:
 quarkusBuild {
   nativeArgs {
     containerBuild = true
-    builderImage = "base/images/red-hat/red-hat-8-5/quay-io/quarkus/quarkus-micro-image:1.0.5"
+    builderImage = "base/images/red-hat/red-hat-8-5/quay-io/quarkus/quarkus-micro-image:1.0.0"
     containerRuntime = "docker"
   }
 }
@@ -266,6 +266,11 @@ Instruction steps are given in point 7.
   
 ## 7. Docker examples
 Below, I present a few examples, how running the app can be achieved without installing java.
+Remember, that the running MySQL database, with a working schema is needed first.
+In given examples I used: `127.0.0.1:3306/quarkus_jpa_example_v1`
+It could be anything you wish, but remember that the address, port and schema must exist
+before you try to start the container. Otherwise, you will see an error.
+
 ### 7.1. how to run Quarkus from docker container with custom `application.yml` mount
 
 ```bash
@@ -285,7 +290,7 @@ info:
 quarkus:
   datasource:
     jdbc:
-      url: mysql://host.docker.internal:3306/oss_module-a?serverTimezone=UTC&useLegacyDatetimeCode=false
+      url: mysql://host.docker.internal:3306/quarkus_jpa_example_v1?serverTimezone=UTC&useLegacyDatetimeCode=false'
     password: <changeme>
   http:
     cors: true
@@ -321,7 +326,7 @@ info:
 quarkus:
   datasource:
     jdbc:
-      url:mysql://host.docker.internal:3306/iam_sso-iam?serverTimezone=UTC&useLegacyDatetimeCode=false
+      url: mysql://host.docker.internal:3306/quarkus_jpa_example_v1?serverTimezone=UTC&useLegacyDatetimeCode=false
   http:
     cors: true
     port: 8080
@@ -398,7 +403,7 @@ info:
 quarkus:
   datasource:
     jdbc:
-      url:mysql://host.docker.internal:3306/iam_sso-iam?serverTimezone=UTC&useLegacyDatetimeCode=false
+      url:mysql://host.docker.internal:3306/quarkus_jpa_example_v1?serverTimezone=UTC&useLegacyDatetimeCode=false
     password: <changeme>
   http:
     cors: true
