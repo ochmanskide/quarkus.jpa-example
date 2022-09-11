@@ -32,6 +32,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static de.ochmanski.microservices.quarkus.jpa.example.util.Constants.*;
+import static de.ochmanski.microservices.quarkus.jpa.example.util.Constants.RFC3986.ERROR_CODE_PREFIX;
+
 @Log4j2
 @Path("/")
 public class HelloController {

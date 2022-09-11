@@ -39,7 +39,8 @@ dependencies {
             'org.jboss.logmanager:log4j2-jboss-logmanager',
             'javax.servlet:javax.servlet-api:4.0.1',
             'javax:javaee-api:8.0.1',
-            'net.blueid.microservices.oss.mcip:mcip-service-rest:1.0.4'
+            'org.jetbrains:annotations:23.0.0',
+            'org.apache.commons:commons-lang3:3.12.0'
     )
     configurations.all {
         exclude group: 'org.slf4j', module: 'slf4j-log4j12'

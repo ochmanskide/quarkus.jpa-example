@@ -5,9 +5,6 @@ last updated: ###TIMESTAMP###
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
-&nbsp;
-
-&nbsp;
 
 ## Table of Contents:
 
@@ -34,12 +31,6 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 - [9. Related Guides](#10-related-guides)
 - [10. Including resources](#11-including-resources)
   - [10.1. Including resources](#111-including-resources)
-&nbsp;
-
-&nbsp;
-&nbsp;
-
-&nbsp;
 
 ## 1. How to clone:
 
@@ -47,9 +38,6 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 git clone git@github.com:lukaszochmanski/quarkus-jpa-example.git \
 ~/Workspace/de/ochmanski/microservices/quarkus/quarkus-jpa-example
 ```
-&nbsp;
-
-&nbsp;
 
 ## 2. Running the application in dev mode
 
@@ -80,10 +68,7 @@ curl http://localhost:8080/q/health/ready
 ```
 
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
-> &nbsp;
-
-&nbsp;
-
+> 
 ## 3. Packaging and running the application
 
 The application can be packaged using:
@@ -104,9 +89,6 @@ gradle build -Dquarkus.package.type=uber-jar
 ```
 
 The application, packaged as an _über-jar_, is now runnable using `java -jar build/*-runner.jar`.
-&nbsp;
-
-&nbsp;
 
 ## 4. Creating a native executable
 
@@ -125,9 +107,6 @@ gradle build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
 You can then execute your native executable with: `./build/code-with-quarkus-###CI_COMMIT_TAG###-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.  
-&nbsp;
-
-&nbsp;
 
 ## 5. how to create a docker image locally:
 
@@ -267,18 +246,10 @@ However, this will probably not work, because the database url is not the same i
 One solution is to open the container and install mysql database there.  
 Another solution is to use the database that already exists on your machine.  
 A third solution would be to connect to our dev database instance.  
-Instruction steps are given in point 8. How to connect to the dev database.  
-&nbsp;
-
-&nbsp;
-
-Below, I present some examples, how it can be done.
-&nbsp;
-
-&nbsp;
+Instruction steps are given in point 7.
 
 ## 7. Docker examples
-
+Below, I present a few examples, how running the app can be achieved without installing java.
 ### 7.1. how to run Quarkus from docker container with custom `application.yml` mount
 
 ```bash
@@ -438,16 +409,11 @@ git checkout main
 git tag -a 1.0.0 -m 'please always add -a flag, which is short for "annotated"'
 git push --follow-tags
 ```
-&nbsp;
-
-&nbsp;
 ## 9. Related Guides
 
 - Hibernate Validator ([guide](https://quarkus.io/guides/validation)): Validate object properties (field, getter) and
   method parameters for your beans (REST, CDI, JPA)
-  &nbsp;
 
-&nbsp;
 ## 10. Including resources
 
 Supporting native in your application
