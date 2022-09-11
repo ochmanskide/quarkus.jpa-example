@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static de.ochmanski.microservices.quarkus.jpa.example.util.Constants.*;
-import static de.ochmanski.microservices.quarkus.jpa.example.util.Constants.RFC3986.ERROR_CODE_PREFIX;
+import static de.ochmanski.microservices.quarkus.jpa.example.util.Constants.RFC3986.*;
 
 @Log4j2
 @Path("/")

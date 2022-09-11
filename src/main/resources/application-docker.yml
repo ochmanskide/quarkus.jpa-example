@@ -12,8 +12,7 @@ quarkus:
     db-kind: mysql
     username: oss_mcip_v1
     jdbc:
-#      url: 'jdbc:mysql://host.docker.internal:3306/oss_mcip_v1?serverTimezone=UTC&useLegacyDatetimeCode=false'
-      url: jdbc:mysql://host.docker.internal:43306/oss_mcip_v1?serverTimezone=UTC&useLegacyDatetimeCode=false'
+      url: jdbc:mysql://host.docker.internal:3306/quarkus_jpa_example_v1?serverTimezone=UTC&useLegacyDatetimeCode=false'
   hibernate-orm:
     database:
       generation: drop-and-create

@@ -1,8 +1,8 @@
 package de.ochmanski.microservices.quarkus.jpa.example.logger;
 
-import de.ochmanski.microservices.oss.module_a.module_a_service_rest.model.OssMapIdentitySyncRequest;
+import de.ochmanski.generated.model.OssMapIdentitySyncRequest;
 import de.ochmanski.microservices.quarkus.jpa.example.mapper.MapIdentityResponseMapper;
-import de.ochmanski.oss.mcip.rest.response.OssMapIdentitySyncFromMcipResponse;
+import de.ochmanski.microservices.quarkus.jpa.example.rest.response.OssMapIdentitySyncFromMcipResponse;
 import lombok.extern.log4j.Log4j2;
 
 import javax.enterprise.context.ApplicationScoped;
