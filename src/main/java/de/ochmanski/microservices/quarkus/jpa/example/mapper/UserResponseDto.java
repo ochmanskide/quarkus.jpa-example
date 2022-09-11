@@ -13,7 +13,7 @@ import lombok.extern.jackson.Jacksonized;
 
 import java.util.UUID;
 
-@RegisterForReflection(targets = {UserResponseDto.class, UserResponseDto.OssMapIdentityResponseDtoBuilder.class})
+@RegisterForReflection(targets = {UserResponseDto.class, UserResponseDto.UserResponseDtoBuilder.class})
 @ExcludeFromJacocoGeneratedReport
 @Value
 @Builder

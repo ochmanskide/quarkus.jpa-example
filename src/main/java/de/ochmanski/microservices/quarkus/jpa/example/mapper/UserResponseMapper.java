@@ -19,8 +19,8 @@ public class UserResponseMapper {
 
     public OssMapIdentitySyncFromMcipResponse mapIdentityPost(UserSyncRequest userSyncRequest) {
         UserSyncRequestDto dto = map(userSyncRequest);
-        OssMapIdentitySyncFromMcipResponseDto ossMapIdentitySyncFromMcipResponse = userService.mapIdentityPost(dto);
-        return map(ossMapIdentitySyncFromMcipResponse);
+        OssMapIdentitySyncFromMcipResponseDto response = userService.mapIdentityPost(dto);
+        return map(response);
     }
 
     private OssMapIdentitySyncFromMcipResponse map(OssMapIdentitySyncFromMcipResponseDto dto) {
