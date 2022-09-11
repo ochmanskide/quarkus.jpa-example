@@ -54,18 +54,18 @@ public class MapIdentityService {
         return null == entity
                 ? OssMapIdentitySyncFromMcipResponseDto.builder().build()
                 : OssMapIdentitySyncFromMcipResponseDto.builder()
-                .status(mapToStatus(entity))
-                .syncInfoResponse(mapToSyncInfoResponse(entity))
-                .build();
+                    .status(mapToStatus(entity))
+                    .syncInfoResponse(mapToSyncInfoResponse(entity))
+                    .build();
     }
 
     private OssSyncResponseStatusDto mapToStatus(OssMapIdentityResponseDto entity) {
         return null == entity
                 ? OssSyncResponseStatusDto.builder().build()
                 : OssSyncResponseStatusDto.builder()
-                .code(200)
-                .description(crateStatus(entity))
-                .build();
+                    .code(200)
+                    .description(crateStatus(entity))
+                    .build();
     }
 
     @NotNull
@@ -81,19 +81,19 @@ public class MapIdentityService {
         return null == entity
                 ? SyncInfoResponseDto.builder().build()
                 : SyncInfoResponseDto.builder()
-                .ossMapIdentityResponse(mapToOssMapIdentityResponse(entity))
-                .build();
+                    .ossMapIdentityResponse(mapToOssMapIdentityResponse(entity))
+                    .build();
     }
 
     private OssMapIdentityResponseDto mapToOssMapIdentityResponse(OssMapIdentityResponseDto response) {
         return null == response
                 ? OssMapIdentityResponseDto.builder().build()
                 : OssMapIdentityResponseDto.builder()
-                .id(response.getId())
-                .identity(response.getIdentity())
-                .token(response.getToken())
-                .credentialId(response.getCredentialId())
-                .build();
+                    .id(response.getId())
+                    .identity(response.getIdentity())
+                    .token(response.getToken())
+                    .credentialId(response.getCredentialId())
+                    .build();
     }
 
     private OssMapIdentityRequestDto map(OssMapIdentitySyncRequestDto ossMapIdentitySyncRequest) {
@@ -101,9 +101,9 @@ public class MapIdentityService {
         return null == request
                 ? OssMapIdentityRequestDto.builder().build()
                 : OssMapIdentityRequestDto.builder()
-                .identity(request.getIdentity())
-                .token(request.getToken())
-                .credentialId(request.getCredentialId())
-                .build();
+                    .identity(request.getIdentity())
+                    .token(request.getToken())
+                    .credentialId(request.getCredentialId())
+                    .build();
     }
 }
