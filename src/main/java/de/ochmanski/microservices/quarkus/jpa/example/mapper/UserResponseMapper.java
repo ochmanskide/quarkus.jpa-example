@@ -18,7 +18,7 @@ public class UserResponseMapper {
     UserService userService;
 
     public OssMapIdentitySyncFromMcipResponse mapIdentityPost(OssMapIdentitySyncRequest ossMapIdentitySyncRequest) {
-        OssMapIdentitySyncRequestDto dto = map(ossMapIdentitySyncRequest);
+        UserSyncRequestDto dto = map(ossMapIdentitySyncRequest);
         OssMapIdentitySyncFromMcipResponseDto ossMapIdentitySyncFromMcipResponse = userService.mapIdentityPost(dto);
         return map(ossMapIdentitySyncFromMcipResponse);
     }
@@ -67,10 +67,10 @@ public class UserResponseMapper {
                 .build();
     }
 
-    private OssMapIdentitySyncRequestDto map(OssMapIdentitySyncRequest ossMapIdentitySyncRequest) {
+    private UserSyncRequestDto map(OssMapIdentitySyncRequest ossMapIdentitySyncRequest) {
         return null == ossMapIdentitySyncRequest
-                ? OssMapIdentitySyncRequestDto.builder().build()
-                : OssMapIdentitySyncRequestDto.builder()
+                ? UserSyncRequestDto.builder().build()
+                : UserSyncRequestDto.builder()
                 .syncInfoRequest(mapOssMapIdentitySyncRequest(ossMapIdentitySyncRequest))
                 .build();
     }

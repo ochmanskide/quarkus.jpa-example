@@ -14,7 +14,7 @@ public class UserService {
     @Inject
     UserRepositoryMapper userRepositoryMapper;
 
-    public OssMapIdentitySyncFromMcipResponseDto mapIdentityPost(OssMapIdentitySyncRequestDto ossMapIdentitySyncRequest) {
+    public OssMapIdentitySyncFromMcipResponseDto mapIdentityPost(UserSyncRequestDto ossMapIdentitySyncRequest) {
         return null == ossMapIdentitySyncRequest
                 ? createEmpty()
                 : save(ossMapIdentitySyncRequest);
@@ -40,7 +40,7 @@ public class UserService {
         return createDto(entity);
     }
 
-    public OssMapIdentitySyncFromMcipResponseDto save(OssMapIdentitySyncRequestDto ossMapIdentitySyncRequest) {
+    public OssMapIdentitySyncFromMcipResponseDto save(UserSyncRequestDto ossMapIdentitySyncRequest) {
         UserRequestDto ossMapIdentity = map(ossMapIdentitySyncRequest);
         UserResponseDto entity = userRepositoryMapper.save(ossMapIdentity);
         return createDto(entity);
@@ -96,7 +96,7 @@ public class UserService {
                 .build();
     }
 
-    private UserRequestDto map(OssMapIdentitySyncRequestDto ossMapIdentitySyncRequest) {
+    private UserRequestDto map(UserSyncRequestDto ossMapIdentitySyncRequest) {
         UserRequestDto request = ossMapIdentitySyncRequest.getSyncInfoRequest();
         return null == request
                 ? UserRequestDto.builder().build()

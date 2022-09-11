@@ -47,6 +47,6 @@ public class UserController implements UserApi {
             @ApiResponse(code = 401, message = "No Authentication", response = Void.class)})
     public Response mapIdentityPost(
             @ApiParam(value = "") @Valid OssMapIdentitySyncRequest ossMapIdentitySyncRequest) throws NotFoundException {
-        return userLogger.mapIdentityPost(ossMapIdentitySyncRequest);
+        return userLogger.insert(ossMapIdentitySyncRequest);
     }
 }

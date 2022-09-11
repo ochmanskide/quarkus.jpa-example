@@ -21,11 +21,11 @@ public class UserLogger {
 
     private static final String SERVICE_NAME = "MCIP_SERVICE ";
 
-    public Response mapIdentityPost(OssMapIdentitySyncRequest ossMapIdentitySyncRequest) {
-        log.info(SERVICE_NAME + "POST /v1/map-identity request: " + toJson(ossMapIdentitySyncRequest));
+    public Response insert(OssMapIdentitySyncRequest ossMapIdentitySyncRequest) {
+        log.info(SERVICE_NAME + "POST /v1/user request: " + toJson(ossMapIdentitySyncRequest));
         OssMapIdentitySyncFromMcipResponse ossMapIdentitySyncFromMcipResponse
                 = mapIdentityServiceResponseMapper.mapIdentityPost(ossMapIdentitySyncRequest);
-        log.debug(SERVICE_NAME + "POST /v1/map-identity response: " + toJson(ossMapIdentitySyncFromMcipResponse));
+        log.debug(SERVICE_NAME + "POST /v1/user response: " + toJson(ossMapIdentitySyncFromMcipResponse));
         return Response.ok(ossMapIdentitySyncFromMcipResponse).build();
     }
 
