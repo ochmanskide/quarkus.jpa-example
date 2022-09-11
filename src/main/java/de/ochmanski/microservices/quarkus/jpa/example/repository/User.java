@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 
-@RegisterForReflection(targets = {OssMapIdentity.class, OssMapIdentity.OssMapIdentityBuilder.class, OssMapIdentity.Fields.class})
+@RegisterForReflection(targets = {User.class, User.UserBuilder.class, User.Fields.class})
 @ExcludeFromJacocoGeneratedReport
 @Getter
 @Setter
@@ -23,18 +23,18 @@ import java.util.UUID;
 @FieldNameConstants
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(
-        name = OssMapIdentity.Table.OSS_MAP_IDENTITY,
-        schema = OssMapIdentity.Schema.OSS_MCIP,
+        name = User.Table.USER,
+        schema = User.Schema.JPA_EXAMPLE,
         indexes = {
-                @Index(name = OssMapIdentity.Indexes.IDX_IDENTITY, columnList = OssMapIdentity.Columns.IDENTITY),
-                @Index(name = OssMapIdentity.Indexes.IDX_TOKEN, columnList = OssMapIdentity.Columns.TOKEN),
-                @Index(name = OssMapIdentity.Indexes.IDX_CREDENTIAL_ID, columnList = OssMapIdentity.Columns.CREDENTIAL_ID)
+                @Index(name = User.Indexes.IDX_IDENTITY, columnList = User.Columns.IDENTITY),
+                @Index(name = User.Indexes.IDX_TOKEN, columnList = User.Columns.TOKEN),
+                @Index(name = User.Indexes.IDX_CREDENTIAL_ID, columnList = User.Columns.CREDENTIAL_ID)
         },
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = {OssMapIdentity.Columns.IDENTITY})
+                @UniqueConstraint(columnNames = {User.Columns.IDENTITY})
         }
 )
-public class OssMapIdentity {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = ColumnDefinitions.GENERATOR)
@@ -57,7 +57,7 @@ public class OssMapIdentity {
         if (this == o) {
             return true;
         }
-        return o instanceof OssMapIdentity && Objects.equals(getId(), ((OssMapIdentity) o).getId());
+        return o instanceof User && Objects.equals(getId(), ((User) o).getId());
     }
 
     @Override
@@ -69,14 +69,14 @@ public class OssMapIdentity {
     // <editor-fold defaultstate="collapsed" desc="database schema">
     @RegisterForReflection
     public static final class Schema {
-        public static final String OSS_MCIP = "OSS_MCIP_V1";
+        public static final String JPA_EXAMPLE = "QUARKUS_JPA_EXAMPLE_V1";
     }
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="table name">
     @RegisterForReflection
     public static final class Table {
-        public static final String OSS_MAP_IDENTITY = "OSS_MAP_IDENTITY_V1";
+        public static final String USER = "USER_V1";
     }
     // </editor-fold>
 

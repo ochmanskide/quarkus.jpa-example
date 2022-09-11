@@ -21,5 +21,5 @@ import lombok.extern.jackson.Jacksonized;
 @FieldNameConstants
 public class OssMapIdentitySyncRequestDto {
 
-    OssMapIdentityRequestDto syncInfoRequest;
+    UserRequestDto syncInfoRequest;
 }

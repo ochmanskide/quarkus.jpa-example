@@ -2,7 +2,7 @@ package de.ochmanski.microservices.quarkus.jpa.example.service;
 
 
 import de.ochmanski.microservices.quarkus.jpa.example.mapper.*;
-import de.ochmanski.microservices.quarkus.jpa.example.repository.MapIdentityRepositoryMapper;
+import de.ochmanski.microservices.quarkus.jpa.example.repository.UserRepositoryMapper;
 import org.jetbrains.annotations.NotNull;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -12,7 +12,7 @@ import javax.inject.Inject;
 public class MapIdentityService {
 
     @Inject
-    MapIdentityRepositoryMapper mapIdentityRepositoryMapper;
+    UserRepositoryMapper userRepositoryMapper;
 
     public OssMapIdentitySyncFromMcipResponseDto mapIdentityPost(OssMapIdentitySyncRequestDto ossMapIdentitySyncRequest) {
         return null == ossMapIdentitySyncRequest
@@ -21,28 +21,28 @@ public class MapIdentityService {
     }
 
     public OssMapIdentitySyncFromMcipResponseDto findById(String id) {
-        OssMapIdentityResponseDto entity = mapIdentityRepositoryMapper.findById(id);
+        OssMapIdentityResponseDto entity = userRepositoryMapper.findById(id);
         return createDto(entity);
     }
 
     public OssMapIdentitySyncFromMcipResponseDto findByIdentity(String identity) {
-        OssMapIdentityResponseDto entity = mapIdentityRepositoryMapper.findByIdentity(identity);
+        OssMapIdentityResponseDto entity = userRepositoryMapper.findByIdentity(identity);
         return createDto(entity);
     }
 
     public OssMapIdentitySyncFromMcipResponseDto findByToken(String token) {
-        OssMapIdentityResponseDto entity = mapIdentityRepositoryMapper.findByToken(token);
+        OssMapIdentityResponseDto entity = userRepositoryMapper.findByToken(token);
         return createDto(entity);
     }
 
     public OssMapIdentitySyncFromMcipResponseDto findByCredentialId(String credentialId) {
-        OssMapIdentityResponseDto entity = mapIdentityRepositoryMapper.findByCredentialId(credentialId);
+        OssMapIdentityResponseDto entity = userRepositoryMapper.findByCredentialId(credentialId);
         return createDto(entity);
     }
 
     public OssMapIdentitySyncFromMcipResponseDto save(OssMapIdentitySyncRequestDto ossMapIdentitySyncRequest) {
-        OssMapIdentityRequestDto ossMapIdentity = map(ossMapIdentitySyncRequest);
-        OssMapIdentityResponseDto entity = mapIdentityRepositoryMapper.save(ossMapIdentity);
+        UserRequestDto ossMapIdentity = map(ossMapIdentitySyncRequest);
+        OssMapIdentityResponseDto entity = userRepositoryMapper.save(ossMapIdentity);
         return createDto(entity);
     }
 
@@ -74,7 +74,7 @@ public class MapIdentityService {
     }
 
     private boolean alreadyExists(OssMapIdentityResponseDto entity) {
-        return mapIdentityRepositoryMapper.alreadyExists(entity);
+        return userRepositoryMapper.alreadyExists(entity);
     }
 
     private SyncInfoResponseDto mapToSyncInfoResponse(OssMapIdentityResponseDto entity) {
@@ -96,11 +96,11 @@ public class MapIdentityService {
                 .build();
     }
 
-    private OssMapIdentityRequestDto map(OssMapIdentitySyncRequestDto ossMapIdentitySyncRequest) {
-        OssMapIdentityRequestDto request = ossMapIdentitySyncRequest.getSyncInfoRequest();
+    private UserRequestDto map(OssMapIdentitySyncRequestDto ossMapIdentitySyncRequest) {
+        UserRequestDto request = ossMapIdentitySyncRequest.getSyncInfoRequest();
         return null == request
-                ? OssMapIdentityRequestDto.builder().build()
-                : OssMapIdentityRequestDto.builder()
+                ? UserRequestDto.builder().build()
+                : UserRequestDto.builder()
                 .identity(request.getIdentity())
                 .token(request.getToken())
                 .credentialId(request.getCredentialId())

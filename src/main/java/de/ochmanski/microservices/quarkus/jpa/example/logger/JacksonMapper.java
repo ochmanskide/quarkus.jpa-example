@@ -3,7 +3,7 @@ package de.ochmanski.microservices.quarkus.jpa.example.logger;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import de.ochmanski.microservices.quarkus.jpa.example.repository.OssMapIdentity;
+import de.ochmanski.microservices.quarkus.jpa.example.repository.User;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -16,7 +16,7 @@ public class JacksonMapper {
 
     public String toJson(Object o) {
         return toJsonUnfiltered(o)
-                .replace("class " + OssMapIdentity.class.getSimpleName() + " ", "");
+                .replace("class " + User.class.getSimpleName() + " ", "");
     }
 
     private String toJsonUnfiltered(Object o) {

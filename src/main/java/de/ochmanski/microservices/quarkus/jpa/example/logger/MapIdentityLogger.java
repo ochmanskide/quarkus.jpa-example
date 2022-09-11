@@ -1,7 +1,7 @@
 package de.ochmanski.microservices.quarkus.jpa.example.logger;
 
 import de.ochmanski.generated.model.OssMapIdentitySyncRequest;
-import de.ochmanski.microservices.quarkus.jpa.example.mapper.MapIdentityResponseMapper;
+import de.ochmanski.microservices.quarkus.jpa.example.mapper.UserResponseMapper;
 import de.ochmanski.microservices.quarkus.jpa.example.rest.response.OssMapIdentitySyncFromMcipResponse;
 import lombok.extern.log4j.Log4j2;
 
@@ -17,7 +17,7 @@ public class MapIdentityLogger {
     JacksonMapper jacksonMapper;
 
     @Inject
-    MapIdentityResponseMapper mapIdentityServiceResponseMapper;
+    UserResponseMapper mapIdentityServiceResponseMapper;
 
     private static final String SERVICE_NAME = "MCIP_SERVICE ";
 

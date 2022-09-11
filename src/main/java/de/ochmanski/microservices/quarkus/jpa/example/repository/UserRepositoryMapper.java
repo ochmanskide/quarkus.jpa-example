@@ -1,6 +1,6 @@
 package de.ochmanski.microservices.quarkus.jpa.example.repository;
 
-import de.ochmanski.microservices.quarkus.jpa.example.mapper.OssMapIdentityRequestDto;
+import de.ochmanski.microservices.quarkus.jpa.example.mapper.UserRequestDto;
 import de.ochmanski.microservices.quarkus.jpa.example.mapper.OssMapIdentityResponseDto;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -8,36 +8,36 @@ import javax.inject.Inject;
 
 
 @ApplicationScoped
-public class MapIdentityRepositoryMapper {
+public class UserRepositoryMapper {
 
     @Inject
-    MapIdentityRepositoryLogger mapIdentityRepositoryLogger;
+    UserRepositoryLogger userRepositoryLogger;
 
     public OssMapIdentityResponseDto findById(String id) {
-        OssMapIdentity entity = mapIdentityRepositoryLogger.findById(id);
+        User entity = userRepositoryLogger.findById(id);
         return map(entity);
     }
 
     public OssMapIdentityResponseDto findByIdentity(String identity) {
-        OssMapIdentity entity = mapIdentityRepositoryLogger.findByIdentity(identity);
+        User entity = userRepositoryLogger.findByIdentity(identity);
         return map(entity);
     }
 
     public OssMapIdentityResponseDto findByToken(String token) {
-        OssMapIdentity entity = mapIdentityRepositoryLogger.findByToken(token);
+        User entity = userRepositoryLogger.findByToken(token);
         return map(entity);
     }
 
     public OssMapIdentityResponseDto findByCredentialId(String credentialId) {
-        OssMapIdentity entity = mapIdentityRepositoryLogger.findByCredentialId(credentialId);
+        User entity = userRepositoryLogger.findByCredentialId(credentialId);
         return map(entity);
     }
 
-    public OssMapIdentityResponseDto save(OssMapIdentityRequestDto dto) {
-        return mapIdentityRepositoryLogger.save(dto);
+    public OssMapIdentityResponseDto save(UserRequestDto dto) {
+        return userRepositoryLogger.save(dto);
     }
 
-    private OssMapIdentityResponseDto map(OssMapIdentity entity) {
+    private OssMapIdentityResponseDto map(User entity) {
         return null == entity
                 ? OssMapIdentityResponseDto.builder().build()
                 : OssMapIdentityResponseDto.builder()
@@ -49,6 +49,6 @@ public class MapIdentityRepositoryMapper {
     }
 
     public boolean alreadyExists(OssMapIdentityResponseDto entity) {
-        return mapIdentityRepositoryLogger.alreadyExists(entity);
+        return userRepositoryLogger.alreadyExists(entity);
     }
 }

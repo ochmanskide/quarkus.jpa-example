@@ -12,7 +12,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 @ApplicationScoped
-public class MapIdentityResponseMapper {
+public class UserResponseMapper {
 
     @Inject
     MapIdentityService mapIdentityService;
@@ -75,11 +75,11 @@ public class MapIdentityResponseMapper {
                 .build();
     }
 
-    private OssMapIdentityRequestDto mapOssMapIdentitySyncRequest(OssMapIdentitySyncRequest ossMapIdentitySyncRequest) {
+    private UserRequestDto mapOssMapIdentitySyncRequest(OssMapIdentitySyncRequest ossMapIdentitySyncRequest) {
         OssMapIdentityRequest syncInfoRequest = ossMapIdentitySyncRequest.getSyncInfoRequest();
         return null == syncInfoRequest
-                ? OssMapIdentityRequestDto.builder().build()
-                : OssMapIdentityRequestDto.builder()
+                ? UserRequestDto.builder().build()
+                : UserRequestDto.builder()
                 .identity(syncInfoRequest.getIdentity())
                 .token(syncInfoRequest.getToken())
                 .credentialId(syncInfoRequest.getCredentialId())

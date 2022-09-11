@@ -11,7 +11,7 @@ import lombok.Value;
 import lombok.experimental.FieldNameConstants;
 import lombok.extern.jackson.Jacksonized;
 
-@RegisterForReflection(targets = {OssMapIdentityRequestDto.class, OssMapIdentityRequestDto.OssMapIdentityRequestDtoBuilder.class})
+@RegisterForReflection(targets = {UserRequestDto.class, UserRequestDto.UserRequestDtoBuilder.class})
 @ExcludeFromJacocoGeneratedReport
 @Value
 @Builder
@@ -19,7 +19,7 @@ import lombok.extern.jackson.Jacksonized;
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 @Jacksonized
 @FieldNameConstants
-public class OssMapIdentityRequestDto {
+public class UserRequestDto {
 
     String identity;
     String token;
