@@ -13,7 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-public interface MapIdentityApi {
+public interface UserApi {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

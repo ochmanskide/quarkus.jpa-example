@@ -3,8 +3,8 @@ package de.ochmanski.microservices.quarkus.jpa.example.controller;
 import de.ochmanski.generated.api.NotFoundException;
 import de.ochmanski.generated.model.OssMapIdentitySyncRequest;
 import de.ochmanski.generated.model.OssMapIdentitySyncResponse;
-import de.ochmanski.microservices.quarkus.jpa.example.logger.MapIdentityLogger;
-import de.ochmanski.microservices.quarkus.jpa.example.rest.controller.MapIdentityApi;
+import de.ochmanski.microservices.quarkus.jpa.example.logger.UserLogger;
+import de.ochmanski.microservices.quarkus.jpa.example.rest.controller.UserApi;
 import de.ochmanski.microservices.quarkus.jpa.example.rest.response.OssMapIdentitySyncFromMcipResponse;
 import io.swagger.annotations.*;
 import org.eclipse.microprofile.openapi.annotations.OpenAPIDefinition;
@@ -20,17 +20,17 @@ import javax.ws.rs.core.Response;
 
 @OpenAPIDefinition(
         info = @org.eclipse.microprofile.openapi.annotations.info.Info(
-                title = "Access Permission",
+                title = "User API",
                 version = "v1",
-                description = "Mock access Permission endpoints from ac-api"
+                description = "Example user REST with JPA"
         )
 )
-@Path("/v1/map-identity")
+@Path("/v1/user")
 @Api(description = "the map-identity API")
-public class MapIdentityController implements MapIdentityApi {
+public class UserController implements UserApi {
 
     @Inject
-    MapIdentityLogger mapIdentityLogger;
+    UserLogger userLogger;
 
     @Override
     @POST
@@ -47,6 +47,6 @@ public class MapIdentityController implements MapIdentityApi {
             @ApiResponse(code = 401, message = "No Authentication", response = Void.class)})
     public Response mapIdentityPost(
             @ApiParam(value = "") @Valid OssMapIdentitySyncRequest ossMapIdentitySyncRequest) throws NotFoundException {
-        return mapIdentityLogger.mapIdentityPost(ossMapIdentitySyncRequest);
+        return userLogger.mapIdentityPost(ossMapIdentitySyncRequest);
     }
 }

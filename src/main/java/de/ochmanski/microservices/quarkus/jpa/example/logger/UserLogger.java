@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 
 @Log4j2
 @ApplicationScoped
-public class MapIdentityLogger {
+public class UserLogger {
 
     @Inject
     JacksonMapper jacksonMapper;
