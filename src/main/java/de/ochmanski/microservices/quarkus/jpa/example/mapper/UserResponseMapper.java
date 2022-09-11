@@ -3,7 +3,7 @@ package de.ochmanski.microservices.quarkus.jpa.example.mapper;
 import de.ochmanski.generated.model.OssMapIdentityRequest;
 import de.ochmanski.generated.model.OssMapIdentitySyncRequest;
 import de.ochmanski.generated.model.OssSyncResponseStatus;
-import de.ochmanski.microservices.quarkus.jpa.example.service.MapIdentityService;
+import de.ochmanski.microservices.quarkus.jpa.example.service.UserService;
 import de.ochmanski.microservices.quarkus.jpa.example.rest.response.OssMapIdentityResponse;
 import de.ochmanski.microservices.quarkus.jpa.example.rest.response.OssMapIdentitySyncFromMcipResponse;
 import de.ochmanski.microservices.quarkus.jpa.example.rest.response.SyncInfoResponse;
@@ -15,11 +15,11 @@ import javax.inject.Inject;
 public class UserResponseMapper {
 
     @Inject
-    MapIdentityService mapIdentityService;
+    UserService userService;
 
     public OssMapIdentitySyncFromMcipResponse mapIdentityPost(OssMapIdentitySyncRequest ossMapIdentitySyncRequest) {
         OssMapIdentitySyncRequestDto dto = map(ossMapIdentitySyncRequest);
-        OssMapIdentitySyncFromMcipResponseDto ossMapIdentitySyncFromMcipResponse = mapIdentityService.mapIdentityPost(dto);
+        OssMapIdentitySyncFromMcipResponseDto ossMapIdentitySyncFromMcipResponse = userService.mapIdentityPost(dto);
         return map(ossMapIdentitySyncFromMcipResponse);
     }
 
