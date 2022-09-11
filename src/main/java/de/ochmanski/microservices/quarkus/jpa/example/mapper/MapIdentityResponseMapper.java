@@ -1,12 +1,12 @@
 package de.ochmanski.microservices.quarkus.jpa.example.mapper;
 
+import de.ochmanski.microservices.oss.module_a.module_a_service_rest.model.OssMapIdentityRequest;
+import de.ochmanski.microservices.oss.module_a.module_a_service_rest.model.OssMapIdentitySyncRequest;
+import de.ochmanski.microservices.oss.module_a.module_a_service_rest.model.OssSyncResponseStatus;
 import de.ochmanski.microservices.quarkus.jpa.example.service.MapIdentityService;
-import net.blueid.microservices.oss.module_a.module_a_service_rest.model.OssMapIdentityRequest;
-import net.blueid.microservices.oss.module_a.module_a_service_rest.model.OssMapIdentitySyncRequest;
-import net.blueid.microservices.oss.module_a.module_a_service_rest.model.OssSyncResponseStatus;
-import net.blueid.oss.mcip.rest.response.OssMapIdentityResponse;
-import net.blueid.oss.mcip.rest.response.OssMapIdentitySyncFromMcipResponse;
-import net.blueid.oss.mcip.rest.response.SyncInfoResponse;
+import de.ochmanski.oss.mcip.rest.response.OssMapIdentityResponse;
+import de.ochmanski.oss.mcip.rest.response.OssMapIdentitySyncFromMcipResponse;
+import de.ochmanski.oss.mcip.rest.response.SyncInfoResponse;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

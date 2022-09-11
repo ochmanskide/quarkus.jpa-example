@@ -2,9 +2,7 @@ package de.ochmanski.microservices.quarkus.jpa.example.service;
 
 
 import de.ochmanski.microservices.quarkus.jpa.example.mapper.*;
-import net.blueid.microservices.oss.mcip.mapper.*;
 import de.ochmanski.microservices.quarkus.jpa.example.repository.MapIdentityRepositoryMapper;
-import net.blueid.microservices.oss.ochmanski.mapper.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.enterprise.context.ApplicationScoped;
