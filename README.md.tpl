@@ -32,12 +32,14 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 - [10. Including resources](#11-including-resources)
   - [10.1. Including resources](#111-including-resources)
 
+  
 ## 1. How to clone:
 
 ```bash
 git clone git@github.com:lukaszochmanski/quarkus-jpa-example.git \
 ~/Workspace/de/ochmanski/microservices/quarkus/quarkus-jpa-example
 ```
+
 
 ## 2. Running the application in dev mode
 
@@ -68,7 +70,8 @@ curl http://localhost:8080/q/health/ready
 ```
 
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
-> 
+
+
 ## 3. Packaging and running the application
 
 The application can be packaged using:
@@ -90,6 +93,7 @@ gradle build -Dquarkus.package.type=uber-jar
 
 The application, packaged as an _über-jar_, is now runnable using `java -jar build/*-runner.jar`.
 
+
 ## 4. Creating a native executable
 
 You can create a native executable using:
@@ -107,6 +111,7 @@ gradle build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
 You can then execute your native executable with: `./build/code-with-quarkus-###CI_COMMIT_TAG###-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.  
+
 
 ## 5. how to create a docker image locally:
 
@@ -234,12 +239,14 @@ We run our build pipelines inside another Docker container. You may find details
 -Dquarkus.native.container-build=false
 ```
 
+
 ## 6. How to start with Docker
 
 This option is good for someone that is not a java developer and wants runtime environment quickly.
 
 ```bash
-docker run --rm -p 8080:8080 --name="quarkus-jpa-example-###CI_COMMIT_TAG###" -it ../releases/de/ochmanski/microservices/quarkus-jpa-example:###CI_COMMIT_TAG###
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-###CI_COMMIT_TAG###"  \
+-it ../releases/de/ochmanski/microservices/quarkus-jpa-example:###CI_COMMIT_TAG###
 ```
 
 However, this will probably not work, because the database url is not the same inside a docker container.  
@@ -247,6 +254,7 @@ One solution is to open the container and install mysql database there.
 Another solution is to use the database that already exists on your machine.  
 A third solution would be to connect to our dev database instance.  
 Instruction steps are given in point 7.
+
 
 ## 7. Docker examples
 Below, I present a few examples, how running the app can be achieved without installing java.
@@ -394,6 +402,7 @@ quarkus:
     level: DEBUG
 ```
 
+
 ## 8. How to bump a version?
 
 ### 8.1. Add a new tag
@@ -409,10 +418,13 @@ git checkout main
 git tag -a 1.0.0 -m 'please always add -a flag, which is short for "annotated"'
 git push --follow-tags
 ```
+
+
 ## 9. Related Guides
 
-- Hibernate Validator ([guide](https://quarkus.io/guides/validation)): Validate object properties (field, getter) and
-  method parameters for your beans (REST, CDI, JPA)
+Hibernate Validator ([guide](https://quarkus.io/guides/validation)): Validate object properties (field, getter) and
+method parameters for your beans (REST, CDI, JPA)
+
 
 ## 10. Including resources
 
