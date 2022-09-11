@@ -2,12 +2,8 @@
 
 last updated: Sun Sep 11 21:56:01 CEST 2022
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
-
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
-&nbsp;
-
-&nbsp;
+This project uses Quarkus, the Supersonic Subatomic Java Framework.  
+If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .  
 
 ## Table of Contents:
 
@@ -103,10 +99,7 @@ If you want to build an _über-jar_, execute the following command:
 gradle build -Dquarkus.package.type=uber-jar
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar build/*-runner.jar`.
-&nbsp;
-
-&nbsp;
+The application, packaged as an _über-jar_, is now runnable using `java -jar build/*-runner.jar`.  
 
 ## 4. Creating a native executable
 
@@ -125,9 +118,6 @@ gradle build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
 You can then execute your native executable with: `./build/code-with-quarkus-1.0.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.  
-&nbsp;
-
-&nbsp;
 
 ## 5. how to create a docker image locally:
 
@@ -153,7 +143,7 @@ or:
 quarkusBuild {
   nativeArgs {
     containerBuild = true
-    builderImage = "base/images/red-hat/red-hat-8-5/quay-io/quarkus/quarkus-micro-image:1.0.5"
+    builderImage = "base/images/red-hat/red-hat-8-5/quay-io/quarkus/quarkus-micro-image:1.0.0"
     containerRuntime = "docker"
   }
 }
@@ -267,18 +257,10 @@ However, this will probably not work, because the database url is not the same i
 One solution is to open the container and install mysql database there.  
 Another solution is to use the database that already exists on your machine.  
 A third solution would be to connect to our dev database instance.  
-Instruction steps are given in point 8. How to connect to the dev database.  
-&nbsp;
-
-&nbsp;
-
-Below, I present some examples, how it can be done.
-&nbsp;
-
-&nbsp;
+Instruction steps are given in point 7.  
 
 ## 7. Docker examples
-
+Below, I present some examples, how running an app can be done be done.
 ### 7.1. how to run Quarkus from docker container with custom `application.yml` mount
 
 ```bash
