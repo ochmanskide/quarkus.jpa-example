@@ -22,5 +22,5 @@ import lombok.extern.jackson.Jacksonized;
 public class SyncInfoResponseDto {
 
     @Builder.Default
-    OssMapIdentityResponseDto ossMapIdentityResponse = OssMapIdentityResponseDto.builder().build();
+    UserResponseDto ossMapIdentityResponse = UserResponseDto.builder().build();
 }

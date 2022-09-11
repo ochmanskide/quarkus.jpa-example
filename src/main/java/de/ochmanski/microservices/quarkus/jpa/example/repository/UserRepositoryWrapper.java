@@ -2,7 +2,7 @@ package de.ochmanski.microservices.quarkus.jpa.example.repository;
 
 import de.ochmanski.microservices.quarkus.jpa.example.logger.JacksonMapper;
 import de.ochmanski.microservices.quarkus.jpa.example.mapper.UserRequestDto;
-import de.ochmanski.microservices.quarkus.jpa.example.mapper.OssMapIdentityResponseDto;
+import de.ochmanski.microservices.quarkus.jpa.example.mapper.UserResponseDto;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import lombok.extern.log4j.Log4j2;
 
@@ -37,7 +37,7 @@ public class UserRepositoryWrapper {
         return userRepository.findByCredentialId(credentialId).firstResult();
     }
 
-    public OssMapIdentityResponseDto save(UserRequestDto detached) {
+    public UserResponseDto save(UserRequestDto detached) {
         User attached = findByIdentity(detached);
         return null == attached ? create(detached) : update(attached, detached);
     }
@@ -56,16 +56,16 @@ public class UserRepositoryWrapper {
         return userRepository.findByIdentity(detached.getIdentity());
     }
 
-    private OssMapIdentityResponseDto create(UserRequestDto detached) {
+    private UserResponseDto create(UserRequestDto detached) {
         log.debug("Entity with ID {} was not found. It will be created.", toJson(detached));
         User entity = persist(detached);
         return mapAsNew(entity);
     }
 
-    private OssMapIdentityResponseDto mapAsNew(User entity) {
+    private UserResponseDto mapAsNew(User entity) {
         return null == entity
-                ? OssMapIdentityResponseDto.builder().build()
-                : OssMapIdentityResponseDto.builder()
+                ? UserResponseDto.builder().build()
+                : UserResponseDto.builder()
                 .id(entity.getId())
                 .identity(entity.getIdentity())
                 .token(entity.getToken())
@@ -74,7 +74,7 @@ public class UserRepositoryWrapper {
                 .build();
     }
 
-    private OssMapIdentityResponseDto update(User attached, UserRequestDto detached) {
+    private UserResponseDto update(User attached, UserRequestDto detached) {
         log.debug("Update existing entity with ID: {}", attached.getIdentity());
         attached.setIdentity(detached.getIdentity());
         attached.setToken(detached.getToken());
@@ -83,10 +83,10 @@ public class UserRepositoryWrapper {
         return mapAsOld(entity);
     }
 
-    private OssMapIdentityResponseDto mapAsOld(User entity) {
+    private UserResponseDto mapAsOld(User entity) {
         return null == entity
-                ? OssMapIdentityResponseDto.builder().build()
-                : OssMapIdentityResponseDto.builder()
+                ? UserResponseDto.builder().build()
+                : UserResponseDto.builder()
                 .id(entity.getId())
                 .identity(entity.getIdentity())
                 .token(entity.getToken())
@@ -119,7 +119,7 @@ public class UserRepositoryWrapper {
         return jacksonMapper.toJson(entity);
     }
 
-    public boolean alreadyExists(OssMapIdentityResponseDto entity) {
+    public boolean alreadyExists(UserResponseDto entity) {
         return userRepository.findByIdentity(entity.getIdentity()).count() == 1L;
     }
 }

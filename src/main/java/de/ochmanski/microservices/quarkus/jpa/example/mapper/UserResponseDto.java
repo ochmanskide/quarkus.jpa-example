@@ -13,7 +13,7 @@ import lombok.extern.jackson.Jacksonized;
 
 import java.util.UUID;
 
-@RegisterForReflection(targets = {OssMapIdentityResponseDto.class, OssMapIdentityResponseDto.OssMapIdentityResponseDtoBuilder.class})
+@RegisterForReflection(targets = {UserResponseDto.class, UserResponseDto.OssMapIdentityResponseDtoBuilder.class})
 @ExcludeFromJacocoGeneratedReport
 @Value
 @Builder
@@ -21,7 +21,7 @@ import java.util.UUID;
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 @Jacksonized
 @FieldNameConstants
-public class OssMapIdentityResponseDto {
+public class UserResponseDto {
 
     UUID id;
     String identity;

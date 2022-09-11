@@ -56,7 +56,7 @@ public class UserResponseMapper {
     }
 
     private OssMapIdentityResponse mapOssMapIdentityResponse(SyncInfoResponseDto dto) {
-        OssMapIdentityResponseDto ossMapIdentityResponse = dto.getOssMapIdentityResponse();
+        UserResponseDto ossMapIdentityResponse = dto.getOssMapIdentityResponse();
         return null == ossMapIdentityResponse
                 ? OssMapIdentityResponse.builder().build()
                 : OssMapIdentityResponse.builder()

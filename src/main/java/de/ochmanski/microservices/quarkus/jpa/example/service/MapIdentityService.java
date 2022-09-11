@@ -21,28 +21,28 @@ public class MapIdentityService {
     }
 
     public OssMapIdentitySyncFromMcipResponseDto findById(String id) {
-        OssMapIdentityResponseDto entity = userRepositoryMapper.findById(id);
+        UserResponseDto entity = userRepositoryMapper.findById(id);
         return createDto(entity);
     }
 
     public OssMapIdentitySyncFromMcipResponseDto findByIdentity(String identity) {
-        OssMapIdentityResponseDto entity = userRepositoryMapper.findByIdentity(identity);
+        UserResponseDto entity = userRepositoryMapper.findByIdentity(identity);
         return createDto(entity);
     }
 
     public OssMapIdentitySyncFromMcipResponseDto findByToken(String token) {
-        OssMapIdentityResponseDto entity = userRepositoryMapper.findByToken(token);
+        UserResponseDto entity = userRepositoryMapper.findByToken(token);
         return createDto(entity);
     }
 
     public OssMapIdentitySyncFromMcipResponseDto findByCredentialId(String credentialId) {
-        OssMapIdentityResponseDto entity = userRepositoryMapper.findByCredentialId(credentialId);
+        UserResponseDto entity = userRepositoryMapper.findByCredentialId(credentialId);
         return createDto(entity);
     }
 
     public OssMapIdentitySyncFromMcipResponseDto save(OssMapIdentitySyncRequestDto ossMapIdentitySyncRequest) {
         UserRequestDto ossMapIdentity = map(ossMapIdentitySyncRequest);
-        OssMapIdentityResponseDto entity = userRepositoryMapper.save(ossMapIdentity);
+        UserResponseDto entity = userRepositoryMapper.save(ossMapIdentity);
         return createDto(entity);
     }
 
@@ -50,7 +50,7 @@ public class MapIdentityService {
         return OssMapIdentitySyncFromMcipResponseDto.builder().build();
     }
 
-    private OssMapIdentitySyncFromMcipResponseDto createDto(OssMapIdentityResponseDto entity) {
+    private OssMapIdentitySyncFromMcipResponseDto createDto(UserResponseDto entity) {
         return null == entity
                 ? OssMapIdentitySyncFromMcipResponseDto.builder().build()
                 : OssMapIdentitySyncFromMcipResponseDto.builder()
@@ -59,7 +59,7 @@ public class MapIdentityService {
                 .build();
     }
 
-    private OssSyncResponseStatusDto mapToStatus(OssMapIdentityResponseDto entity) {
+    private OssSyncResponseStatusDto mapToStatus(UserResponseDto entity) {
         return null == entity
                 ? OssSyncResponseStatusDto.builder().build()
                 : OssSyncResponseStatusDto.builder()
@@ -69,15 +69,15 @@ public class MapIdentityService {
     }
 
     @NotNull
-    private String crateStatus(OssMapIdentityResponseDto entity) {
+    private String crateStatus(UserResponseDto entity) {
         return entity.isBrandNew() ? "new Identity created" : "Identity updated";
     }
 
-    private boolean alreadyExists(OssMapIdentityResponseDto entity) {
+    private boolean alreadyExists(UserResponseDto entity) {
         return userRepositoryMapper.alreadyExists(entity);
     }
 
-    private SyncInfoResponseDto mapToSyncInfoResponse(OssMapIdentityResponseDto entity) {
+    private SyncInfoResponseDto mapToSyncInfoResponse(UserResponseDto entity) {
         return null == entity
                 ? SyncInfoResponseDto.builder().build()
                 : SyncInfoResponseDto.builder()
@@ -85,10 +85,10 @@ public class MapIdentityService {
                 .build();
     }
 
-    private OssMapIdentityResponseDto mapToOssMapIdentityResponse(OssMapIdentityResponseDto response) {
+    private UserResponseDto mapToOssMapIdentityResponse(UserResponseDto response) {
         return null == response
-                ? OssMapIdentityResponseDto.builder().build()
-                : OssMapIdentityResponseDto.builder()
+                ? UserResponseDto.builder().build()
+                : UserResponseDto.builder()
                 .id(response.getId())
                 .identity(response.getIdentity())
                 .token(response.getToken())
