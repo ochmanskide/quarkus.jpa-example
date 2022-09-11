@@ -7,14 +7,14 @@ plugins {
     id 'io.quarkus'
     id 'jacoco'
 }
-
+repositories {
+    mavenCentral()
+}
 ext {
     buildNumber = project.properties['buildNumber'] ?: 'local'
 }
 
-repositories {
-    mavenCentral()
-}
+
 
 group 'de.ochmanski.microservices'
 version 'local-SNAPSHOT'

@@ -11,7 +11,7 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class JacksonMapper {
 
-    @ConfigProperty(name = "net.blueid.microservices.oss.mcip.jackson.prettyPrint", defaultValue = "true")
+    @ConfigProperty(name = "de.ochmanski.microservices.oss.mcip.jackson.prettyPrint", defaultValue = "true")
     boolean prettyPrint;
 
     public String toJson(Object o) {

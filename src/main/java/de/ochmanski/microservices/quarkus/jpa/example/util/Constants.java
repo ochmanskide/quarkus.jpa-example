@@ -94,9 +94,9 @@ public class Constants {
         public final String ARTIFACT_ID_SNAKE_CASE = ARTIFACT_ID.replace("-", "_");
 
         /**
-         * net.blueid.microservices.mcip
+         * de.ochmanski.microservices.mcip
          */
-        public final String GROUP_ID = "net.blueid.microservices.mcip";
+        public final String GROUP_ID = "de.ochmanski.microservices.mcip";
 
         /**
          * net_blueid_microservices_mcip
