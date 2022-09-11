@@ -155,7 +155,7 @@ command to execute:
 
 ```bash
 GRAALVM_HOME='$HOME/.sdkman/candidates/java/22.1.0.r17-grl'
-groupId='de/ochmanski/microservices/iam/sso-iam'
+groupId='de/ochmanski/microservices'
 artifactId='quarkus-jpa-example'
 DOCKER_REPOSITORY="snapshots"
 gradle build \
@@ -205,7 +205,7 @@ quarkus build --native
 a similar command for gradle users:
 
 ```bash
-groupId='de/ochmanski/microservices/iam/sso-iam'
+groupId='de/ochmanski/microservices'
 artifactId='quarkus-jpa-example'
 DOCKER_REPOSITORY="snapshots"
 gradle build \
