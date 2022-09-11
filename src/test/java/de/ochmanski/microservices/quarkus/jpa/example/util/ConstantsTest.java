@@ -1,6 +1,5 @@
-package net.blueid.microservices.oss.mcip.util;
+package de.ochmanski.microservices.quarkus.jpa.example.util;
 
-import de.ochmanski.microservices.quarkus.jpa.example.util.Constants;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;

@@ -1,10 +1,10 @@
 package de.ochmanski.microservices.quarkus.jpa.example.repository;
 
+import de.ochmanski.annotations.ExcludeFromJacocoGeneratedReport;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.FieldNameConstants;
-import net.blueid.oss.mcip.rest.ExcludeFromJacocoGeneratedReport;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
