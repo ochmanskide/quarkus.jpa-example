@@ -1,6 +1,6 @@
 # Quarkus JPA Example
 
-last updated: Sun Sep 11 23:16:02 CEST 2022
+last updated: Sun Sep 11 23:19:16 CEST 2022
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -95,7 +95,9 @@ gradle build -Dquarkus.package.type=uber-jar
 
 The application, packaged as an _über-jar_, is now runnable using `java -jar build/*-runner.jar`.
 &nbsp;
-  
+
+&nbsp;
+
 ## 4. Creating a native executable
 
 You can create a native executable using:
@@ -110,10 +112,12 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 gradle build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./build/code-with-quarkus-1.0.6-SNAPSHOT-runner`
+You can then execute your native executable with: `./build/code-with-quarkus-1.0.7-SNAPSHOT-runner`
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.&nbsp;
-  
+If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.
+&nbsp;
+
+&nbsp;
   
 ## 5. how to create a docker image locally:
 
@@ -247,15 +251,15 @@ We run our build pipelines inside another Docker container. You may find details
 This option is good for someone that is not a java developer and wants runtime environment quickly.
 
 ```bash
-docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.6"  \
--it ../releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.6
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.7"  \
+-it ../releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.7
 ```
 
 However, this will probably not work, because the database url is not the same inside a docker container.  
 One solution is to open the container and install mysql database there.  
 Another solution is to use the database that already exists on your machine.  
 A third solution would be to connect to our dev database instance.  
-Instruction steps are given in point 7.
+Instruction steps are given in point 7.  
 &nbsp;
   
 ## 7. Docker examples
@@ -264,10 +268,10 @@ Below, I present a few examples, how running the app can be achieved without ins
 
 ```bash
 cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
-docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.6" \
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.7" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
--it releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.6
+-it releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.7
 ```
 
 #### 7.1.1. Sample `application-docker.yml` with a password
@@ -299,11 +303,11 @@ from `application-docker.yml` file.
 
 ```bash
 cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
-docker run -it --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.6" \
+docker run -it --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.7" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
 -e QUARKUS_DATASOURCE_PASSWORD=$QUARKUS_DATASOURCE_PASSWORD \
-releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.6
+releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.7
 ```
 
 #### 7.2.1. Sample `application-docker.yml` without a password
@@ -329,9 +333,9 @@ quarkus:
 ### 7.3. how to run Quarkus from docker container without mounting `application.yml`
 
 ```bash
-docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.6" \
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.7" \
 -e QUARKUS_DATASOURCE_PASSWORD=$QUARKUS_DATASOURCE_PASSWORD \
--it releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.6
+-it releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.7
 ```
 
 > **_NOTE:_** `quarkus.datasource.url` must contain: `jdbc:mysql://host.docker.internal:3306`
@@ -355,14 +359,14 @@ pipeline. The result will be the same.
 #### 7.4.1. how to run a snapshot
 
 look at the output of the gradle command in the console. Assuming that the created docker image is identified as:
-`1.0.6-SNAPSHOT`, you may run it in the following manner:
+`1.0.7-SNAPSHOT`, you may run it in the following manner:
 
 ```bash
 cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
-docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.6-SNAPSHOT" \
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.7-SNAPSHOT" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
--it snapshots/de/ochmanski/microservices/quarkus-jpa-example:1.0.6-SNAPSHOT
+-it snapshots/de/ochmanski/microservices/quarkus-jpa-example:1.0.7-SNAPSHOT
 ```
 
 > **_NOTE:_** `quarkus.datasource.url` must contain: `jdbc:mysql://host.docker.internal:3306`
@@ -373,14 +377,14 @@ target=/work/config/application.yml \
 #### 7.4.2. how to open a docker image
 
 look at the output of the gradle command in the console. Assuming that the created docker image is identified as:
-`1.0.6-SNAPSHOT`, you may open it in the following manner:
+`1.0.7-SNAPSHOT`, you may open it in the following manner:
 
 ```bash
 cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
-docker run --rm -ti --privileged --entrypoint /bin/sh --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.6-SNAPSHOT" \
+docker run --rm -ti --privileged --entrypoint /bin/sh --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.7-SNAPSHOT" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
--it snapshots/de/ochmanski/microservices/quarkus-jpa-example:1.0.6-SNAPSHOT
+-it snapshots/de/ochmanski/microservices/quarkus-jpa-example:1.0.7-SNAPSHOT
 ```
 
 #### 7.4.3. Sample `application-docker.yml` with a password
@@ -425,7 +429,7 @@ git push --follow-tags
 ## 9. Related Guides
 
 Hibernate Validator ([guide](https://quarkus.io/guides/validation)): Validate object properties (field, getter) and
-method parameters for your beans (REST, CDI, JPA)
+method parameters for your beans (REST, CDI, JPA)  
 &nbsp;
   
 ## 10. Including resources
