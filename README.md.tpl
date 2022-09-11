@@ -33,6 +33,8 @@ If you want to learn more about Quarkus, please visit its website: https://quark
   - [10.1. Including resources](#111-including-resources)
 &nbsp;
   
+&nbsp;
+  
 ## 1. How to clone:
 
 ```bash
