@@ -95,7 +95,9 @@ gradle build -Dquarkus.package.type=uber-jar
 
 The application, packaged as an _über-jar_, is now runnable using `java -jar build/*-runner.jar`.
 &nbsp;
-  
+
+&nbsp;
+
 ## 4. Creating a native executable
 
 You can create a native executable using:
@@ -112,8 +114,10 @@ gradle build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
 
 You can then execute your native executable with: `./build/code-with-quarkus-###CI_COMMIT_TAG###-SNAPSHOT-runner`
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.&nbsp;
-  
+If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.
+&nbsp;
+
+&nbsp;
   
 ## 5. how to create a docker image locally:
 
@@ -255,7 +259,7 @@ However, this will probably not work, because the database url is not the same i
 One solution is to open the container and install mysql database there.  
 Another solution is to use the database that already exists on your machine.  
 A third solution would be to connect to our dev database instance.  
-Instruction steps are given in point 7.
+Instruction steps are given in point 7.  
 &nbsp;
   
 ## 7. Docker examples
@@ -425,7 +429,7 @@ git push --follow-tags
 ## 9. Related Guides
 
 Hibernate Validator ([guide](https://quarkus.io/guides/validation)): Validate object properties (field, getter) and
-method parameters for your beans (REST, CDI, JPA)
+method parameters for your beans (REST, CDI, JPA)  
 &nbsp;
   
 ## 10. Including resources
