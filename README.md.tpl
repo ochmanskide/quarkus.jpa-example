@@ -1,12 +1,10 @@
 # Quarkus JPA Example
 
-**Last updated:** ###TIMESTAMP###
+**Last updated:** ###TIMESTAMP###  
+**Author:** Lukasz Ochmanski (github@ochmanski.de)  
 
-**Author:** Lukasz Ochmanski (github@ochmanski.de)
-
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
-
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+This project uses Quarkus, the Supersonic Subatomic Java Framework.  
+If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .  
 
 ## Table of Contents:
 
