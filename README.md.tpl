@@ -274,7 +274,7 @@ Set it up, before you start the Docker container. Otherwise, you will see an err
 ### 7.1. how to run Quarkus from docker container with custom `application.yml` mount
 
 ```bash
-cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
+cd ~/Workspace/de/ochmanski/microservices/quarkus-jpa-example
 docker run --rm -p 8080:8080 --name="quarkus-jpa-example-###CI_COMMIT_TAG###" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
@@ -309,7 +309,7 @@ you may pass the value directly into the docker container using `-e` flag. In su
 from `application-docker.yml` file.
 
 ```bash
-cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
+cd ~/Workspace/de/ochmanski/microservices/quarkus-jpa-example
 docker run -it --rm -p 8080:8080 --name="quarkus-jpa-example-###CI_COMMIT_TAG###" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
@@ -369,7 +369,7 @@ look at the output of the gradle command in the console. Assuming that the creat
 `###CI_COMMIT_TAG###-SNAPSHOT`, you may run it in the following manner:
 
 ```bash
-cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
+cd ~/Workspace/de/ochmanski/microservices/quarkus-jpa-example
 docker run --rm -p 8080:8080 --name="quarkus-jpa-example-###CI_COMMIT_TAG###-SNAPSHOT" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
@@ -387,7 +387,7 @@ look at the output of the gradle command in the console. Assuming that the creat
 `###CI_COMMIT_TAG###-SNAPSHOT`, you may open it in the following manner:
 
 ```bash
-cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
+cd ~/Workspace/de/ochmanski/microservices/quarkus-jpa-example
 docker run --rm -ti --privileged --entrypoint /bin/sh --rm -p 8080:8080 --name="quarkus-jpa-example-###CI_COMMIT_TAG###-SNAPSHOT" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
