@@ -5,7 +5,7 @@ import de.ochmanski.generated.model.UserSyncRequest;
 import de.ochmanski.generated.model.OssMapIdentitySyncResponse;
 import de.ochmanski.microservices.quarkus.jpa.example.logger.UserLogger;
 import de.ochmanski.microservices.quarkus.jpa.example.rest.controller.UserApi;
-import de.ochmanski.microservices.quarkus.jpa.example.rest.response.OssMapIdentitySyncFromMcipResponse;
+import de.ochmanski.microservices.quarkus.jpa.example.rest.response.UserResponse;
 import io.swagger.annotations.*;
 import org.eclipse.microprofile.openapi.annotations.OpenAPIDefinition;
 
@@ -43,10 +43,10 @@ public class UserController implements UserApi {
             authorizations = {@Authorization(value = "apiKey")},
             tags = {"Credential data",})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = OssMapIdentitySyncFromMcipResponse.class),
+            @ApiResponse(code = 200, message = "OK", response = UserResponse.class),
             @ApiResponse(code = 401, message = "No Authentication", response = Void.class)})
-    public Response mapIdentityPost(
+    public Response update(
             @ApiParam(value = "") @Valid UserSyncRequest userSyncRequest) throws NotFoundException {
-        return userLogger.insert(userSyncRequest);
+        return userLogger.log(userSyncRequest);
     }
 }

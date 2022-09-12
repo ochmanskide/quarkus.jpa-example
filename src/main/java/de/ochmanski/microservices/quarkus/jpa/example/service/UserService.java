@@ -14,7 +14,7 @@ public class UserService {
     @Inject
     UserRepositoryMapper userRepositoryMapper;
 
-    public OssMapIdentitySyncFromMcipResponseDto mapIdentityPost(UserSyncRequestDto ossMapIdentitySyncRequest) {
+    public OssMapIdentitySyncFromMcipResponseDto update(UserSyncRequestDto ossMapIdentitySyncRequest) {
         return null == ossMapIdentitySyncRequest
                 ? createEmpty()
                 : save(ossMapIdentitySyncRequest);

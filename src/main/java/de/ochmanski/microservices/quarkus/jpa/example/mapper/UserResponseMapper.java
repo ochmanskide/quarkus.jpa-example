@@ -5,7 +5,7 @@ import de.ochmanski.generated.model.UserSyncRequest;
 import de.ochmanski.generated.model.OssSyncResponseStatus;
 import de.ochmanski.microservices.quarkus.jpa.example.service.UserService;
 import de.ochmanski.microservices.quarkus.jpa.example.rest.response.OssMapIdentityResponse;
-import de.ochmanski.microservices.quarkus.jpa.example.rest.response.OssMapIdentitySyncFromMcipResponse;
+import de.ochmanski.microservices.quarkus.jpa.example.rest.response.UserResponse;
 import de.ochmanski.microservices.quarkus.jpa.example.rest.response.SyncInfoResponse;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -17,16 +17,16 @@ public class UserResponseMapper {
     @Inject
     UserService userService;
 
-    public OssMapIdentitySyncFromMcipResponse mapIdentityPost(UserSyncRequest userSyncRequest) {
+    public UserResponse mapUser(UserSyncRequest userSyncRequest) {
         UserSyncRequestDto dto = map(userSyncRequest);
-        OssMapIdentitySyncFromMcipResponseDto response = userService.mapIdentityPost(dto);
+        OssMapIdentitySyncFromMcipResponseDto response = userService.update(dto);
         return map(response);
     }
 
-    private OssMapIdentitySyncFromMcipResponse map(OssMapIdentitySyncFromMcipResponseDto dto) {
+    private UserResponse map(OssMapIdentitySyncFromMcipResponseDto dto) {
         return null == dto
-                ? OssMapIdentitySyncFromMcipResponse.builder().build()
-                : OssMapIdentitySyncFromMcipResponse.builder()
+                ? UserResponse.builder().build()
+                : UserResponse.builder()
                 .status(mapStatus(dto))
                 .syncInfoResponse(mapSyncInfoResponse(dto))
                 .build();

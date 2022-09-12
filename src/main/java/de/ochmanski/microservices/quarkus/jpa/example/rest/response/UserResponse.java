@@ -11,7 +11,7 @@ import lombok.Value;
 import lombok.experimental.FieldNameConstants;
 import lombok.extern.jackson.Jacksonized;
 
-@RegisterForReflection(targets = {OssMapIdentitySyncFromMcipResponse.class, OssMapIdentitySyncFromMcipResponse.OssMapIdentitySyncFromMcipResponseBuilder.class})
+@RegisterForReflection(targets = {UserResponse.class, UserResponse.UserResponseBuilder.class})
 @ExcludeFromJacocoGeneratedReport
 @Value
 @Builder
@@ -19,7 +19,7 @@ import lombok.extern.jackson.Jacksonized;
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 @Jacksonized
 @FieldNameConstants
-public class OssMapIdentitySyncFromMcipResponse {
+public class UserResponse {
 
   @Builder.Default
   OssSyncResponseStatus status = new OssSyncResponseStatus();
