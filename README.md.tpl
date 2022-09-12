@@ -1,6 +1,8 @@
 # Quarkus JPA Example
 
-last updated: ###TIMESTAMP###
+**Last updated:** ###TIMESTAMP###
+
+**Author:** Lukasz Ochmanski (github@ochmanski.de)
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -26,11 +28,11 @@ If you want to learn more about Quarkus, please visit its website: https://quark
     - [7.4.1. how to run a snapshot](#741-how-to-run-a-snapshot)
     - [7.4.2. how to open a docker image](#742-how-to-open-a-docker-image)
     - [7.4.3. Sample `application-docker.yml` with a password](#743-sample-application-dockeryml-with-a-password)
-- [8. How to bump a version?](#9-how-to-bump-a-version)
-  - [8.1. Add a new tag](#91-add-a-new-tag)
-- [9. Related Guides](#10-related-guides)
-- [10. Including resources](#11-including-resources)
-  - [10.1. Including resources](#111-including-resources)
+- [9. How to bump a version?](#9-how-to-bump-a-version)
+  - [9.1. Add a new tag](#91-add-a-new-tag)
+- [10. Related Guides](#10-related-guides)
+- [11. Including resources](#11-including-resources)
+  - [11.1. Including resources](#111-including-resources)
 &nbsp;
   
 &nbsp;
@@ -416,9 +418,9 @@ quarkus:
 ```
 &nbsp;
   
-## 8. How to bump a version?
+## 9. How to bump a version?
 
-### 8.1. Add a new tag
+### 9.1. Add a new tag
 
 ```bash
 git bump
@@ -433,18 +435,18 @@ git push --follow-tags
 ```
 &nbsp;
   
-## 9. Related Guides
+## 10. Related Guides
 
 Hibernate Validator ([guide](https://quarkus.io/guides/validation)): Validate object properties (field, getter) and
 method parameters for your beans (REST, CDI, JPA)  
 &nbsp;
   
-## 10. Including resources
+## 11. Including resources
 
 Supporting native in your application
 GraalVM imposes a number of constraints and making your application a native executable might require a few tweaks.
 
-### 10.1. Including resources
+### 11.1. Including resources
 
 https://quarkus.io/guides/writing-native-applications-tips#including-resources
 https://quarkus.io/guides/writing-native-applications-tips#including-resources-2
