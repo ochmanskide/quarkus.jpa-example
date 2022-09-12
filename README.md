@@ -1,12 +1,10 @@
 # Quarkus JPA Example
 
-**Last updated:** Mon Sep 12 09:48:28 CEST 2022
+**Last updated:** Mon Sep 12 09:49:43 CEST 2022  
+**Author:** Lukasz Ochmanski (github@ochmanski.de)  
 
-**Author:** Lukasz Ochmanski (github@ochmanski.de)
-
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
-
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+This project uses Quarkus, the Supersonic Subatomic Java Framework.  
+If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .  
 
 ## Table of Contents:
 
@@ -116,7 +114,7 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 gradle build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./build/code-with-quarkus-1.0.13-SNAPSHOT-runner`
+You can then execute your native executable with: `./build/code-with-quarkus-1.0.14-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.
 &nbsp;
@@ -255,8 +253,8 @@ We run our build pipelines inside another Docker container. You may find details
 This option is good for someone that is not a java developer and wants runtime environment quickly.
 
 ```bash
-docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.13"  \
--it ../releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.13
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.14"  \
+-it ../releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.14
 ```
 
 However, this will probably not work, because the database url is not the same inside a docker container.  
@@ -277,10 +275,10 @@ before you try to start the container. Otherwise, you will see an error.
 
 ```bash
 cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
-docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.13" \
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.14" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
--it releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.13
+-it releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.14
 ```
 
 #### 7.1.1. Sample `application-docker.yml` with a password
@@ -312,11 +310,11 @@ from `application-docker.yml` file.
 
 ```bash
 cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
-docker run -it --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.13" \
+docker run -it --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.14" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
 -e QUARKUS_DATASOURCE_PASSWORD=$QUARKUS_DATASOURCE_PASSWORD \
-releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.13
+releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.14
 ```
 
 #### 7.2.1. Sample `application-docker.yml` without a password
@@ -342,9 +340,9 @@ quarkus:
 ### 7.3. how to run Quarkus from docker container without mounting `application.yml`
 
 ```bash
-docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.13" \
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.14" \
 -e QUARKUS_DATASOURCE_PASSWORD=$QUARKUS_DATASOURCE_PASSWORD \
--it releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.13
+-it releases/de/ochmanski/microservices/quarkus-jpa-example:1.0.14
 ```
 
 > **_NOTE:_** `quarkus.datasource.url` must contain: `jdbc:mysql://host.docker.internal:3306`
@@ -368,14 +366,14 @@ pipeline. The result will be the same.
 #### 7.4.1. how to run a snapshot
 
 look at the output of the gradle command in the console. Assuming that the created docker image is identified as:
-`1.0.13-SNAPSHOT`, you may run it in the following manner:
+`1.0.14-SNAPSHOT`, you may run it in the following manner:
 
 ```bash
 cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
-docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.13-SNAPSHOT" \
+docker run --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.14-SNAPSHOT" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
--it snapshots/de/ochmanski/microservices/quarkus-jpa-example:1.0.13-SNAPSHOT
+-it snapshots/de/ochmanski/microservices/quarkus-jpa-example:1.0.14-SNAPSHOT
 ```
 
 > **_NOTE:_** `quarkus.datasource.url` must contain: `jdbc:mysql://host.docker.internal:3306`
@@ -386,14 +384,14 @@ target=/work/config/application.yml \
 #### 7.4.2. how to open a docker image
 
 look at the output of the gradle command in the console. Assuming that the created docker image is identified as:
-`1.0.13-SNAPSHOT`, you may open it in the following manner:
+`1.0.14-SNAPSHOT`, you may open it in the following manner:
 
 ```bash
 cd $AWS/de/ochmanski/microservices/quarkus-jpa-example
-docker run --rm -ti --privileged --entrypoint /bin/sh --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.13-SNAPSHOT" \
+docker run --rm -ti --privileged --entrypoint /bin/sh --rm -p 8080:8080 --name="quarkus-jpa-example-1.0.14-SNAPSHOT" \
 --mount type=bind,source=$PWD/src/main/resources/application-docker.yml,\
 target=/work/config/application.yml \
--it snapshots/de/ochmanski/microservices/quarkus-jpa-example:1.0.13-SNAPSHOT
+-it snapshots/de/ochmanski/microservices/quarkus-jpa-example:1.0.14-SNAPSHOT
 ```
 
 #### 7.4.3. Sample `application-docker.yml` with a password
