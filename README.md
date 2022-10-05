@@ -447,7 +447,7 @@ GraalVM imposes a number of constraints and making your application a native exe
 
 ### 11.1. Including resources
 
-https://quarkus.io/guides/writing-native-applications-tips#including-resources
+https://quarkus.io/guides/writing-native-applications-tips#including-resources  
 https://quarkus.io/guides/writing-native-applications-tips#including-resources-2
 
 ```properties
