@@ -454,7 +454,7 @@ https://quarkus.io/guides/writing-native-applications-tips#including-resources-2
 quarkus.native.resources.includes=foo/**,bar/**/*.txt
 ```
   
-### 12. License
+## 12. License
 ```
 Copyright 2023 Lukasz Ochmanski
 
